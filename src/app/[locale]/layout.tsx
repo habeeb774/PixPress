@@ -98,6 +98,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <head>
         <ThemeScript />
+        <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
