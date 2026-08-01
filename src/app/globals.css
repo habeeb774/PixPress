@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a1730;
+  --color-ink-soft: #46567a;
+  --color-brand: #1d5fff;
+  --color-brand-strong: #0f3fd1;
+  --color-brand-tint: #eaf1ff;
+  --color-line: #dfe6f5;
+  --color-surface: #ffffff;
+  --color-canvas: #f6f9ff;
+  --color-good: #12a37a;
+  /* الإسكندرية عائلة واحدة للعناوين والمتن؛ التمييز يجري بالوزن لا بالخط */
+  --font-display: var(--font-alexandria), "Alexandria", system-ui, sans-serif;
+  --font-body: var(--font-alexandria), "Alexandria", system-ui, sans-serif;
+  --radius-card: 18px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-ink: #eef3ff;
+  --color-ink-soft: #94a3c4;
+  --color-brand: #5b8cff;
+  --color-brand-strong: #7ba3ff;
+  --color-brand-tint: #16233f;
+  --color-line: #23304d;
+  --color-surface: #0f1729;
+  --color-canvas: #080d19;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* تركيز واضح للوحة المفاتيح في كل مكان */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* خلفية شطرنجية تُظهر الشفافية أثناء المقارنة */
+.checkerboard {
+  background-image:
+    linear-gradient(45deg, #e6ecf7 25%, transparent 25%),
+    linear-gradient(-45deg, #e6ecf7 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e6ecf7 75%),
+    linear-gradient(-45deg, transparent 75%, #e6ecf7 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
