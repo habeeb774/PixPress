@@ -26,11 +26,13 @@ export function savingsPercent(before: number, after: number): number {
  */
 export function autoQuality(file: File): number {
   const mb = file.size / (1024 * 1024);
-  const base = file.type === "image/png" ? 85 : 82;
-  if (mb > 8) return base - 12;
-  if (mb > 3) return base - 7;
-  if (mb < 0.3) return base + 8;
-  return base;
+  const base = file.type === "image/png" ? 82 : 78;
+  if (mb > 10) return 48;
+  if (mb > 6) return 55;
+  if (mb > 3) return 62;
+  if (mb > 1) return 70;
+  if (mb < 0.25) return 90;
+  return 78;
 }
 
 export function resolveQuality(file: File, s: CompressionSettings): number {
