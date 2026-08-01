@@ -3,6 +3,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 import { notFound } from "next/navigation";
 import Workspace from "@/components/Workspace";
+import AdSenseBanner from "@/components/AdSenseBanner";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -24,6 +25,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <Workspace t={t} locale={locale} />
+
+      <AdSenseBanner slot="1234567890" />
 
       <section className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-16">
         <div className="mx-auto max-w-6xl px-5">
