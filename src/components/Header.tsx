@@ -16,15 +16,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary })
     <header className="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[var(--color-surface)]/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5">
         <Link href={`/${locale}`} className="flex items-center gap-2 font-semibold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-brand)] text-white shadow-sm">
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7" rx="1.2" />
-              <rect x="14" y="14" width="7" height="7" rx="1.2" />
-              <path d="M10 10 14 14" />
-              <path d="M14 10h2" />
-              <path d="M10 14v2" />
-            </svg>
-          </span>
+          <img src="/favicon.svg" alt="PixPress" className="h-8 w-8 rounded-lg object-contain" />
           <span className="display text-lg">{t.brand.name}</span>
         </Link>
 
