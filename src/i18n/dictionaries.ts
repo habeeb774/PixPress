@@ -77,7 +77,7 @@ const ar = {
     convert: { t: "تحويل وتغيير أبعاد", d: "بين JPG وPNG وWebP وAVIF مع تصغير الأبعاد." },
   },
   footer: { rights: "جميع الحقوق محفوظة", made: "يعمل بالكامل داخل متصفحك" },
-} as const;
+};
 
 const en: typeof ar = {
   nav: { home: "Home", about: "About", privacy: "Privacy", terms: "Terms", contact: "Contact", faq: "FAQ" },
