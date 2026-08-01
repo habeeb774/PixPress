@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Minimize2 } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import ThemeToggle from "./ThemeToggle";
@@ -18,7 +17,13 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary })
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5">
         <Link href={`/${locale}`} className="flex items-center gap-2 font-semibold">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-brand)] text-white">
-            <Minimize2 className="h-4 w-4" />
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="8" height="8" rx="1.5" />
+              <rect x="13" y="13" width="8" height="8" rx="1.5" />
+              <path d="M7 7 17 17" />
+              <path d="M17 7h-3V4" />
+              <path d="M7 17v-3H4" />
+            </svg>
           </span>
           <span className="display text-lg">{t.brand.name}</span>
         </Link>
