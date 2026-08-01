@@ -19,10 +19,10 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary })
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-brand)] text-white shadow-sm">
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <rect x="3" y="3" width="8" height="8" rx="1.5" />
+              <path d="M5 13h6" />
+              <path d="M11 5v6" />
+              <path d="M13 13 19 7" />
               <rect x="13" y="13" width="8" height="8" rx="1.5" />
-              <path d="M8 16 16 8" />
-              <path d="M11 8h5v5" />
-              <path d="M8 8h2" />
             </svg>
           </span>
           <span className="display text-lg">{t.brand.name}</span>
