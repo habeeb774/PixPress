@@ -16,13 +16,13 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary })
     <header className="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[var(--color-surface)]/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5">
         <Link href={`/${locale}`} className="flex items-center gap-2 font-semibold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-brand)] text-white">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-brand)] text-white shadow-sm">
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <rect x="3" y="3" width="8" height="8" rx="1.5" />
               <rect x="13" y="13" width="8" height="8" rx="1.5" />
-              <path d="M7 7 17 17" />
-              <path d="M17 7h-3V4" />
-              <path d="M7 17v-3H4" />
+              <path d="M8 16 16 8" />
+              <path d="M11 8h5v5" />
+              <path d="M8 8h2" />
             </svg>
           </span>
           <span className="display text-lg">{t.brand.name}</span>
