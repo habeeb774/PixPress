@@ -26,7 +26,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       <Workspace t={t} locale={locale} />
 
-      <AdSenseBanner slot="1234567890" />
+      <AdSenseBanner slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT} />
 
       <section className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-16">
         <div className="mx-auto max-w-6xl px-5">
