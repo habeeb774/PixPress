@@ -77,36 +77,50 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
     }
   };
 
+  /** المتصفحات تُسقط التنزيلات المتتابعة السريعة، فنترك فاصلاً قصيراً بين كل ملف */
+  const saveBlob = (blob: Blob, name: string) =>
+    new Promise<void>((resolve) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = name;
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+        resolve();
+      }, 250);
+    });
+
   /**
-   * ينزّل كل الصور بصيغة JPG داخل أرشيف واحد دون المساس بنتائج الشاشة.
+   * ينزّل كل صورة بصيغة JPG كملف مستقل — لا أرشيف — دون المساس بنتائج الشاشة.
    * التحويل يجري من الملف الأصلي لا من الناتج المضغوط، تفادياً لضغطٍ فوق ضغط،
    * وبنفس مستوى الجودة والأبعاد المختارَين في الإعدادات.
    */
-  const downloadZipAsJpeg = async () => {
+  const downloadAllJpeg = async () => {
     setBusy("jpeg");
     setConverted(0);
     try {
       const jpegSettings = { ...settings, format: "jpeg" as const, keepTransparency: false };
       const done = jobs.filter((j) => j.status === "done" && j.compressedBlob);
-      const entries: { name: string; blob: Blob }[] = [];
+      const taken = new Set<string>();
 
       for (const job of done) {
-        const name = renameWithExt(job.file.name, JPEG_MIME);
+        const name = uniqueName(renameWithExt(job.file.name, JPEG_MIME), taken);
         try {
-          if (job.outMime === JPEG_MIME) {
-            // الناتج بصيغة JPEG أصلاً — نأخذه كما هو بلا إعادة ترميز
-            entries.push({ name, blob: job.compressedBlob! });
-          } else {
-            const res = await compressFile(`${job.id}-jpeg`, job.file, jpegSettings, () => {});
-            entries.push({ name, blob: res.blob });
-          }
+          // الناتج بصيغة JPEG أصلاً — نأخذه كما هو بلا إعادة ترميز
+          const blob =
+            job.outMime === JPEG_MIME
+              ? job.compressedBlob!
+              : (await compressFile(`${job.id}-jpeg`, job.file, jpegSettings, () => {})).blob;
+          await saveBlob(blob, name);
         } catch {
           // نتخطّى الصورة المتعذّرة ونُكمل بقية الدفعة
         }
         setConverted((n) => n + 1);
       }
-
-      if (entries.length) await saveZip(entries);
     } finally {
       setBusy(null);
     }
@@ -142,7 +156,7 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
                 </button>
                 <button
                   type="button"
-                  onClick={downloadZipAsJpeg}
+                  onClick={downloadAllJpeg}
                   disabled={!totals.count || busy !== null || isWorking}
                   className="flex items-center gap-2 rounded-full border border-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-[var(--color-brand)] transition hover:bg-[var(--color-brand-tint)] disabled:opacity-50"
                 >
