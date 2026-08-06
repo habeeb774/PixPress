@@ -2,22 +2,41 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { FileArchive, RefreshCw, Trash2 } from "lucide-react";
+import { FileArchive, ImageDown, RefreshCw, Trash2 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { formatBytes } from "@/lib/utils";
-import { terminateWorker } from "@/lib/compressor";
+import { formatBytes, renameWithExt } from "@/lib/utils";
+import { compressFile, terminateWorker } from "@/lib/compressor";
 import Dropzone from "./Dropzone";
 import SettingsPanel from "./SettingsPanel";
 import StatsPanel from "./StatsPanel";
 import JobCard from "./JobCard";
 
+const JPEG_MIME = "image/jpeg";
+
+/** يمنع تصادم الأسماء داخل الأرشيف عندما يتحوّل a.png وa.webp إلى a-min.jpg */
+function uniqueName(name: string, taken: Set<string>): string {
+  let out = name;
+  if (taken.has(out)) {
+    const dot = name.lastIndexOf(".");
+    const base = dot > 0 ? name.slice(0, dot) : name;
+    const ext = dot > 0 ? name.slice(dot) : "";
+    let i = 2;
+    while (taken.has(`${base} (${i})${ext}`)) i++;
+    out = `${base} (${i})${ext}`;
+  }
+  taken.add(out);
+  return out;
+}
+
 export default function Workspace({ t, locale }: { t: Dictionary; locale: string }) {
   const jobs = useAppStore((s) => s.jobs);
+  const settings = useAppStore((s) => s.settings);
   const clearAll = useAppStore((s) => s.clearAll);
   const recompressAll = useAppStore((s) => s.recompressAll);
   const isWorking = useAppStore((s) => s.isWorking);
-  const [zipping, setZipping] = useState(false);
+  const [busy, setBusy] = useState<"zip" | "jpeg" | null>(null);
+  const [converted, setConverted] = useState(0);
 
   // ننهي الـ Worker ونحرّر عناوين blob عند مغادرة الصفحة
   useEffect(() => () => terminateWorker(), []);
@@ -31,22 +50,65 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
     };
   }, [jobs]);
 
+  const saveZip = async (entries: { name: string; blob: Blob }[]) => {
+    // نُحمّل JSZip عند الطلب فقط حتى لا يثقل الحزمة الأولى
+    const { default: JSZip } = await import("jszip");
+    const zip = new JSZip();
+    const taken = new Set<string>();
+    entries.forEach((e) => zip.file(uniqueName(e.name, taken), e.blob));
+    const blob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `pixpress-${Date.now()}.zip`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const downloadZip = async () => {
-    setZipping(true);
+    setBusy("zip");
     try {
-      // نُحمّل JSZip عند الطلب فقط حتى لا يثقل الحزمة الأولى
-      const { default: JSZip } = await import("jszip");
-      const zip = new JSZip();
-      jobs.forEach((j) => j.compressedBlob && zip.file(j.name, j.compressedBlob));
-      const blob = await zip.generateAsync({ type: "blob" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `pixpress-${Date.now()}.zip`;
-      a.click();
-      URL.revokeObjectURL(url);
+      const entries = jobs
+        .filter((j) => j.compressedBlob)
+        .map((j) => ({ name: j.name, blob: j.compressedBlob! }));
+      if (entries.length) await saveZip(entries);
     } finally {
-      setZipping(false);
+      setBusy(null);
+    }
+  };
+
+  /**
+   * ينزّل كل الصور بصيغة JPG داخل أرشيف واحد دون المساس بنتائج الشاشة.
+   * التحويل يجري من الملف الأصلي لا من الناتج المضغوط، تفادياً لضغطٍ فوق ضغط،
+   * وبنفس مستوى الجودة والأبعاد المختارَين في الإعدادات.
+   */
+  const downloadZipAsJpeg = async () => {
+    setBusy("jpeg");
+    setConverted(0);
+    try {
+      const jpegSettings = { ...settings, format: "jpeg" as const, keepTransparency: false };
+      const done = jobs.filter((j) => j.status === "done" && j.compressedBlob);
+      const entries: { name: string; blob: Blob }[] = [];
+
+      for (const job of done) {
+        const name = renameWithExt(job.file.name, JPEG_MIME);
+        try {
+          if (job.outMime === JPEG_MIME) {
+            // الناتج بصيغة JPEG أصلاً — نأخذه كما هو بلا إعادة ترميز
+            entries.push({ name, blob: job.compressedBlob! });
+          } else {
+            const res = await compressFile(`${job.id}-jpeg`, job.file, jpegSettings, () => {});
+            entries.push({ name, blob: res.blob });
+          }
+        } catch {
+          // نتخطّى الصورة المتعذّرة ونُكمل بقية الدفعة
+        }
+        setConverted((n) => n + 1);
+      }
+
+      if (entries.length) await saveZip(entries);
+    } finally {
+      setBusy(null);
     }
   };
 
@@ -72,7 +134,7 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
                 <button
                   type="button"
                   onClick={downloadZip}
-                  disabled={!totals.count || zipping}
+                  disabled={!totals.count || busy !== null || isWorking}
                   className="flex items-center gap-2 rounded-full bg-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-strong)] disabled:opacity-50"
                 >
                   <FileArchive className="h-4 w-4" />
@@ -80,8 +142,19 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
                 </button>
                 <button
                   type="button"
+                  onClick={downloadZipAsJpeg}
+                  disabled={!totals.count || busy !== null || isWorking}
+                  className="flex items-center gap-2 rounded-full border border-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-[var(--color-brand)] transition hover:bg-[var(--color-brand-tint)] disabled:opacity-50"
+                >
+                  <ImageDown className={busy === "jpeg" ? "h-4 w-4 animate-pulse" : "h-4 w-4"} />
+                  {busy === "jpeg"
+                    ? `${t.actions.converting} ${converted}/${totals.count}`
+                    : t.actions.downloadAllJpeg}
+                </button>
+                <button
+                  type="button"
                   onClick={recompressAll}
-                  disabled={isWorking}
+                  disabled={isWorking || busy !== null}
                   className="flex items-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm transition hover:border-[var(--color-brand)] disabled:opacity-50"
                 >
                   <RefreshCw className={isWorking ? "h-4 w-4 animate-spin" : "h-4 w-4"} />
@@ -90,7 +163,8 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
                 <button
                   type="button"
                   onClick={clearAll}
-                  className="flex items-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm transition hover:border-red-400 hover:text-red-500"
+                  disabled={busy !== null}
+                  className="flex items-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm transition hover:border-red-400 hover:text-red-500 disabled:opacity-50"
                 >
                   <Trash2 className="h-4 w-4" />
                   {t.actions.clear}

@@ -50,6 +50,8 @@ const ar = {
   },
   actions: {
     downloadAll: "تنزيل الكل (ZIP)",
+    downloadAllJpeg: "تنزيل الكل JPG",
+    converting: "جارٍ التحويل…",
     recompress: "إعادة الضغط",
     clear: "مسح الكل",
     totalSaved: "وفّرت {size} من أصل {total}",
@@ -129,6 +131,8 @@ const en: typeof ar = {
   },
   actions: {
     downloadAll: "Download all (ZIP)",
+    downloadAllJpeg: "Download all as JPG",
+    converting: "Converting…",
     recompress: "Recompress",
     clear: "Clear all",
     totalSaved: "Saved {size} of {total}",
