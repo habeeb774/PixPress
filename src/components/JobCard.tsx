@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Download, X, Check, Copy, Share2, GitCompareArrows, AlertTriangle } from "lucide-react";
 import type { ImageJob } from "@/lib/types";
@@ -9,10 +9,34 @@ import { formatBytes, savingsPercent } from "@/lib/utils";
 import { useAppStore } from "@/store/useAppStore";
 import CompareSlider from "./CompareSlider";
 
+/** الحافظة لا تقبل من الصور سوى PNG، فنعيد ترميز الناتج عند النسخ فقط */
+async function toPngBlob(blob: Blob): Promise<Blob> {
+  if (blob.type === "image/png") return blob;
+  const bitmap = await createImageBitmap(blob);
+  const canvas = document.createElement("canvas");
+  canvas.width = bitmap.width;
+  canvas.height = bitmap.height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("canvas-unavailable");
+  ctx.drawImage(bitmap, 0, 0);
+  bitmap.close();
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("encode-failed"))), "image/png");
+  });
+}
+
 export default function JobCard({ job, t, locale }: { job: ImageJob; t: Dictionary; locale: string }) {
   const removeJob = useAppStore((s) => s.removeJob);
   const [open, setOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "done" | "error">("idle");
+  const [canCopyImage, setCanCopyImage] = useState(false);
+
+  // نفحص بعد التركيب لا أثناء العرض، حتى لا يختلف ناتج الخادم عن المتصفح
+  useEffect(() => {
+    setCanCopyImage(
+      typeof ClipboardItem !== "undefined" && typeof navigator.clipboard?.write === "function"
+    );
+  }, []);
 
   const done = job.status === "done" && job.compressedUrl && job.compressedSize !== undefined;
   const saved = done ? savingsPercent(job.originalSize, job.compressedSize!) : 0;
@@ -25,11 +49,19 @@ export default function JobCard({ job, t, locale }: { job: ImageJob; t: Dictiona
     a.click();
   };
 
-  const copyLink = async () => {
-    if (!job.compressedUrl) return;
-    await navigator.clipboard.writeText(job.compressedUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1600);
+  const copyImage = async () => {
+    if (!job.compressedBlob) return;
+    try {
+      // Safari يُسقط إذن اللمسة إن انتظرنا التحويل قبل بناء ClipboardItem،
+      // فنمرّر الوعد نفسه بدل انتظاره
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": toPngBlob(job.compressedBlob) }),
+      ]);
+      setCopyState("done");
+    } catch {
+      setCopyState("error");
+    }
+    setTimeout(() => setCopyState("idle"), 1600);
   };
 
   const share = async () => {
@@ -97,9 +129,26 @@ export default function JobCard({ job, t, locale }: { job: ImageJob; t: Dictiona
               <IconBtn onClick={() => setOpen((v) => !v)} label={t.job.compare}>
                 <GitCompareArrows className="h-4 w-4" />
               </IconBtn>
-              <IconBtn onClick={copyLink} label={copied ? t.job.copied : t.job.copyLink}>
-                {copied ? <Check className="h-4 w-4 text-[var(--color-good)]" /> : <Copy className="h-4 w-4" />}
-              </IconBtn>
+              {canCopyImage && (
+                <IconBtn
+                  onClick={copyImage}
+                  label={
+                    copyState === "done"
+                      ? t.job.copied
+                      : copyState === "error"
+                        ? t.job.copyFailed
+                        : t.job.copyImage
+                  }
+                >
+                  {copyState === "done" ? (
+                    <Check className="h-4 w-4 text-[var(--color-good)]" />
+                  ) : copyState === "error" ? (
+                    <AlertTriangle className="h-4 w-4 text-red-500" />
+                  ) : (
+                    <Copy className="h-4 w-4" />
+                  )}
+                </IconBtn>
+              )}
               <IconBtn onClick={share} label={t.job.share}>
                 <Share2 className="h-4 w-4" />
               </IconBtn>
