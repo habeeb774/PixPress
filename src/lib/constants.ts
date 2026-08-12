@@ -6,7 +6,7 @@ import type { CompressionSettings } from "./types";
  * اضبط NEXT_PUBLIC_SITE_URL فور ربط نطاق مخصّص.
  */
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pixpress-ten.vercel.app";
-export const SITE_NAME = "PixPress";
+export const SITE_NAME = "LeanPix";
 
 /** رمز تحقّق Google Search Console — يُصدَر وسمَ meta في ترويسة كل صفحة */
 export const GOOGLE_SITE_VERIFICATION = "OY36FnjG26AkbZQejG_QC8MFSLTr33SQS9OLSGMeV7I";

@@ -157,7 +157,7 @@ export const useAppStore = create<AppState>()(
       },
     }),
     {
-      name: "pixpress",
+      name: "leanpix",
       storage: createJSONStorage(() => localStorage),
       // الملفات وعناوين blob غير قابلة للتخزين — نحفظ الإعدادات والإحصائيات فقط
       partialize: (s) => ({ settings: s.settings, stats: s.stats }),

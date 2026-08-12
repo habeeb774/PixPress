@@ -20,11 +20,11 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       </p>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <a
-          href="mailto:hello@pixpress.app"
+          href="mailto:hello@leanpix.app"
           className="flex items-center gap-3 rounded-[var(--radius-card)] border border-[var(--color-line)] p-4 transition hover:border-[var(--color-brand)]"
         >
           <Mail className="h-5 w-5 text-[var(--color-brand)]" />
-          <span className="text-[var(--color-ink)]">hello@pixpress.app</span>
+          <span className="text-[var(--color-ink)]">hello@leanpix.app</span>
         </a>
         <a
           href="https://github.com"

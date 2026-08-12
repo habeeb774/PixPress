@@ -14,7 +14,7 @@ export default function ThemeToggle({ label }: { label: string }) {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("pixpress-theme", next ? "dark" : "light");
+    localStorage.setItem("leanpix-theme", next ? "dark" : "light");
   };
 
   return (

@@ -2,7 +2,7 @@ import type { Locale } from "./config";
 
 const ar = {
   nav: { home: "الرئيسية", about: "من نحن", privacy: "الخصوصية", terms: "الشروط", contact: "اتصل بنا", faq: "الأسئلة الشائعة" },
-  brand: { name: "PixPress", tagline: "ضغط الصور في المتصفح" },
+  brand: { name: "LeanPix", tagline: "ضغط الصور في المتصفح" },
   hero: {
     title: "ضغط الصور بدون رفعها إلى أي خادم",
     subtitle:
@@ -73,7 +73,7 @@ const ar = {
     note: "الأرقام محفوظة في متصفحك وحدك.",
   },
   features: {
-    title: "لماذا PixPress",
+    title: "لماذا LeanPix",
     privacy: { t: "صورك لا تغادر جهازك", d: "المعالجة كلها داخل المتصفح عبر Web Workers." },
     speed: { t: "نتيجة فورية", d: "لا رفع ولا انتظار طابور على الخادم." },
     batch: { t: "دفعات كبيرة", d: "اضغط حتى ٣٠ صورة معاً ونزّلها في ملف ZIP." },
@@ -84,7 +84,7 @@ const ar = {
 
 const en: typeof ar = {
   nav: { home: "Home", about: "About", privacy: "Privacy", terms: "Terms", contact: "Contact", faq: "FAQ" },
-  brand: { name: "PixPress", tagline: "In-browser image compression" },
+  brand: { name: "LeanPix", tagline: "In-browser image compression" },
   hero: {
     title: "Compress images without uploading them",
     subtitle:
@@ -155,7 +155,7 @@ const en: typeof ar = {
     note: "These numbers stay in your browser.",
   },
   features: {
-    title: "Why PixPress",
+    title: "Why LeanPix",
     privacy: { t: "Files stay on your device", d: "All processing happens in-browser via Web Workers." },
     speed: { t: "Instant results", d: "No upload, no server queue." },
     batch: { t: "Big batches", d: "Compress up to 30 images and download one ZIP." },

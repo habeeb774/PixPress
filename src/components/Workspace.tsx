@@ -60,7 +60,7 @@ export default function Workspace({ t, locale }: { t: Dictionary; locale: string
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `pixpress-${Date.now()}.zip`;
+    a.download = `leanpix-${Date.now()}.zip`;
     a.click();
     URL.revokeObjectURL(url);
   };

@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       {ar ? (
         <>
           <p>
-            PixPress أداة ضغط صور تعمل بالكامل داخل متصفحك. لا نرفع ملفاتك ولا نخزّنها ولا نراها. تفتح
+            LeanPix أداة ضغط صور تعمل بالكامل داخل متصفحك. لا نرفع ملفاتك ولا نخزّنها ولا نراها. تفتح
             الصفحة، تسحب صورك، وتنتهي.
           </p>
           <h2>لماذا في المتصفح؟</h2>
@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       ) : (
         <>
           <p>
-            PixPress compresses images entirely inside your browser. Your files are never uploaded,
+            LeanPix compresses images entirely inside your browser. Your files are never uploaded,
             stored, or seen by us.
           </p>
           <h2>Why in-browser?</h2>
