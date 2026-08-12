@@ -1,6 +1,11 @@
 import type { CompressionSettings } from "./types";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pixpress.app";
+/**
+ * يجب أن يطابق النطاق الذي يُخدَم منه الموقع فعلاً — تبني عليه وسوم canonical
+ * وخريطة الموقع وrobots وOpen Graph. الافتراضي هو نطاق الإنتاج الحالي؛
+ * اضبط NEXT_PUBLIC_SITE_URL فور ربط نطاق مخصّص.
+ */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pixpress-ten.vercel.app";
 export const SITE_NAME = "PixPress";
 
 /** رمز تحقّق Google Search Console — يُصدَر وسمَ meta في ترويسة كل صفحة */

@@ -4,9 +4,9 @@ const ar = {
   nav: { home: "الرئيسية", about: "من نحن", privacy: "الخصوصية", terms: "الشروط", contact: "اتصل بنا", faq: "الأسئلة الشائعة" },
   brand: { name: "PixPress", tagline: "ضغط الصور في المتصفح" },
   hero: {
-    title: "ضغط الصور مع الحفاظ على أعلى جودة",
+    title: "ضغط الصور بدون رفعها إلى أي خادم",
     subtitle:
-      "قلّل حجم صورك حتى ٨٠٪ دون فرق تراه العين. كل شيء يعمل داخل متصفحك — لا تُرفع صورك إلى أي خادم.",
+      "قلّل حجم صورك حتى ٨٠٪ دون فرق تراه العين — ضغطاً وتحويلاً وتغيير أبعاد. كل شيء يجري داخل متصفحك، فلا تغادر صورك جهازك ولا تنتظر رفعاً.",
     cta: "اختر الصور",
     drop: "أو اسحب الصور وأفلتها هنا",
     formats: "JPG · PNG · WebP · AVIF · GIF · حتى ٢٥ ميجابايت للصورة",
@@ -86,9 +86,9 @@ const en: typeof ar = {
   nav: { home: "Home", about: "About", privacy: "Privacy", terms: "Terms", contact: "Contact", faq: "FAQ" },
   brand: { name: "PixPress", tagline: "In-browser image compression" },
   hero: {
-    title: "Compress images, keep the quality",
+    title: "Compress images without uploading them",
     subtitle:
-      "Cut image size by up to 80% with no visible difference. Everything runs in your browser — your files are never uploaded.",
+      "Cut image size by up to 80% with no visible difference — compress, convert and resize. Everything runs in your browser, so your files never leave your device and there is no upload to wait for.",
     cta: "Choose images",
     drop: "or drop them anywhere here",
     formats: "JPG · PNG · WebP · AVIF · GIF · up to 25 MB per image",

@@ -25,9 +25,20 @@ async function toPngBlob(blob: Blob): Promise<Blob> {
   });
 }
 
-export default function JobCard({ job, t, locale }: { job: ImageJob; t: Dictionary; locale: string }) {
+export default function JobCard({
+  job,
+  index,
+  t,
+  locale,
+}: {
+  job: ImageJob;
+  index: number;
+  t: Dictionary;
+  locale: string;
+}) {
   const removeJob = useAppStore((s) => s.removeJob);
-  const [open, setOpen] = useState(false);
+  // نفتح مقارنة أول صورة تلقائياً ليرى المستخدم الفرق دون أن يبحث عن الزر
+  const [open, setOpen] = useState(index === 0);
   const [copyState, setCopyState] = useState<"idle" | "done" | "error">("idle");
   const [canCopyImage, setCanCopyImage] = useState(false);
 
