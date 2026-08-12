@@ -1,0 +1,102 @@
+import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+import { toolPresets, toolSlugs, type ToolSlug } from "@/lib/tools";
+import { SITE_URL } from "@/lib/constants";
+import Workspace from "./Workspace";
+
+/**
+ * كل أدوات الموقع تشترك في هذا القالب: عنوان الأداة، ثم الأداة نفسها فوراً،
+ * ثم شرح وأسئلة شائعة تُغذّي الفهرسة. الأداة تسبق النص دائماً — الزائر جاء ليستخدمها.
+ */
+export default function ToolPage({ locale, slug }: { locale: Locale; slug: ToolSlug }) {
+  const t = getDictionary(locale);
+  const tool = t.tools[slug];
+  const others = toolSlugs.filter((s) => s !== slug);
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: tool.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <section className="mx-auto max-w-3xl px-5 pb-8 pt-14 text-center md:pt-20">
+        <h1 className="text-3xl font-extrabold leading-tight md:text-5xl">{tool.h1}</h1>
+        <p className="mx-auto mt-4 max-w-xl text-[var(--color-ink-soft)]">{tool.intro}</p>
+      </section>
+
+      <Workspace t={t} locale={locale} preset={toolPresets[slug]} />
+
+      <section className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-14">
+        <div className="mx-auto max-w-3xl space-y-8 px-5">
+          {tool.body.map((s) => (
+            <div key={s.h}>
+              <h2 className="mb-2 text-xl font-semibold">{s.h}</h2>
+              <p className="leading-relaxed text-[var(--color-ink-soft)]">{s.p}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-14">
+        <div className="mx-auto max-w-3xl px-5">
+          <h2 className="mb-6 text-2xl font-bold">{t.nav.faq}</h2>
+          <dl className="space-y-5">
+            {tool.faq.map((f) => (
+              <div
+                key={f.q}
+                className="rounded-[var(--radius-card)] border border-[var(--color-line)] p-5"
+              >
+                <dt className="mb-1.5 font-semibold">{f.q}</dt>
+                <dd className="leading-relaxed text-[var(--color-ink-soft)]">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <h2 className="mb-4 mt-12 text-2xl font-bold">{t.toolsNav.others}</h2>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {others.map((s) => (
+              <Link
+                key={s}
+                href={`/${locale}/${s}`}
+                className="rounded-[var(--radius-card)] border border-[var(--color-line)] p-4 font-medium transition hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+              >
+                {t.tools[s].nav}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/** البيانات الوصفية مشتركة أيضاً، فتبقى العناوين والروابط الأساسية متّسقة */
+export function toolMetadata(locale: Locale, slug: ToolSlug) {
+  const t = getDictionary(locale);
+  const tool = t.tools[slug];
+  return {
+    title: tool.h1,
+    description: tool.meta,
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/${slug}`,
+      languages: {
+        ar: `${SITE_URL}/ar/${slug}`,
+        en: `${SITE_URL}/en/${slug}`,
+        "x-default": `${SITE_URL}/ar/${slug}`,
+      },
+    },
+    openGraph: { title: tool.h1, description: tool.meta, url: `${SITE_URL}/${locale}/${slug}` },
+  };
+}

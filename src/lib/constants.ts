@@ -5,7 +5,7 @@ import type { CompressionSettings } from "./types";
  * وخريطة الموقع وrobots وOpen Graph. الافتراضي هو نطاق الإنتاج الحالي؛
  * اضبط NEXT_PUBLIC_SITE_URL فور ربط نطاق مخصّص.
  */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pixpress-ten.vercel.app";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://leanpix.site";
 export const SITE_NAME = "LeanPix";
 
 /** رمز تحقّق Google Search Console — يُصدَر وسمَ meta في ترويسة كل صفحة */

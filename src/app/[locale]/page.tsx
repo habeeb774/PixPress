@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { Lock, Zap, Layers, Replace } from "lucide-react";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 import { notFound } from "next/navigation";
+import { toolSlugs } from "@/lib/tools";
 import Workspace from "@/components/Workspace";
 import AdSenseBanner from "@/components/AdSenseBanner";
 
@@ -25,6 +27,21 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <Workspace t={t} locale={locale} />
+
+      <section className="mx-auto max-w-6xl px-5 pb-4">
+        <h2 className="mb-4 text-2xl font-bold">{t.toolsNav.title}</h2>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {toolSlugs.map((s) => (
+            <Link
+              key={s}
+              href={`/${locale}/${s}`}
+              className="rounded-[var(--radius-card)] border border-[var(--color-line)] p-4 font-medium transition hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+            >
+              {t.tools[s].nav}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <AdSenseBanner slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT} />
 

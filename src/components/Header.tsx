@@ -1,15 +1,15 @@
 import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { toolSlugs } from "@/lib/tools";
 import ThemeToggle from "./ThemeToggle";
 import LocaleSwitch from "./LocaleSwitch";
 
 export default function Header({ locale, t }: { locale: Locale; t: Dictionary }) {
   const links = [
     { href: `/${locale}`, label: t.nav.home },
-    { href: `/${locale}/about`, label: t.nav.about },
+    ...toolSlugs.map((s) => ({ href: `/${locale}/${s}`, label: t.tools[s].nav })),
     { href: `/${locale}/faq`, label: t.nav.faq },
-    { href: `/${locale}/contact`, label: t.nav.contact },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary })
           <span className="display text-lg">{t.brand.name}</span>
         </Link>
 
-        <nav className="hidden gap-5 text-sm text-[var(--color-ink-soft)] md:flex">
+        <nav className="hidden gap-5 text-sm text-[var(--color-ink-soft)] lg:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="transition hover:text-[var(--color-brand)]">
               {l.label}

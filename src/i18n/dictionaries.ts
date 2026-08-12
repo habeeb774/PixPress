@@ -80,6 +80,153 @@ const ar = {
     convert: { t: "تحويل وتغيير أبعاد", d: "بين JPG وPNG وWebP وAVIF مع تصغير الأبعاد." },
   },
   footer: { rights: "جميع الحقوق محفوظة", made: "يعمل بالكامل داخل متصفحك" },
+  toolsNav: { title: "الأدوات", others: "أدوات أخرى" },
+  tools: {
+    compress: {
+      nav: "ضغط الصور",
+      h1: "ضغط الصور أونلاين بدون رفعها",
+      meta: "ضغط JPG وPNG وWebP وAVIF داخل متصفحك مباشرة. حتى ٨٠٪ توفير دون فرق تراه العين، وبلا رفع إلى أي خادم.",
+      intro:
+        "اسحب صورك وستُضغط فوراً داخل متصفحك. لا رفع، ولا طابور انتظار، ولا حدّ يومي — ولا تغادر أي صورة جهازك في أي لحظة.",
+      body: [
+        {
+          h: "لماذا يهمّ حجم الصورة؟",
+          p: "الصور تُشكّل الجزء الأكبر من وزن أي صفحة. صفحة بطيئة تعني زائراً يغادر قبل أن يرى منتجك، وترتيباً أدنى في نتائج البحث لأن Google يقيس سرعة التحميل ضمن مؤشرات تجربة الصفحة. تقليل صورة من ٤ ميجابايت إلى ٤٠٠ كيلوبايت يقصّر زمن التحميل إلى العُشر تقريباً دون أن يلاحظ الزائر فرقاً.",
+        },
+        {
+          h: "كيف نختار مستوى الضغط؟",
+          p: "الوضع التلقائي يفحص حجم كل صورة وصيغتها ثم يختار جودة مناسبة لها وحدها: الصور الكبيرة تتحمّل ضغطاً أقوى دون أثر مرئي، والصغيرة تحتاج لطفاً أكبر. وإن أردت التحكم الكامل فاختر «جودة مخصصة» وحرّك المؤشّر بين ١ و١٠٠ وقارن النتيجة بنفسك.",
+        },
+        {
+          h: "الصيغ المدعومة",
+          p: "JPG وPNG وWebP وAVIF وGIF، حتى ٢٥ ميجابايت للصورة و٣٠ صورة في الدفعة الواحدة. تستطيع إبقاء الصيغة كما هي أو التحويل إلى صيغة أحدث أثناء الضغط.",
+        },
+      ],
+      faq: [
+        {
+          q: "هل تُرفع صوري إلى خادم؟",
+          a: "لا. المعالجة كلها تجري داخل متصفحك عبر Web Workers، ولا يُرسل أي بايت من صورك إلى أي خادم — لا خادمنا ولا غيره.",
+        },
+        {
+          q: "كم أوفّر من الحجم؟",
+          a: "يعتمد على الصورة والصيغة. صور JPG الفوتوغرافية توفّر عادةً بين ٦٠٪ و٨٥٪. صور PNG ذات الألوان القليلة قد توفّر أكثر، خصوصاً عند تحويلها إلى WebP.",
+        },
+        {
+          q: "هل تتأثر جودة الصورة؟",
+          a: "الضغط بفقدان يزيل تفاصيل لا تلتقطها العين عند العرض الطبيعي. استخدم زر «مقارنة» لرؤية الفرق بنفسك قبل التنزيل، وارفع الجودة إن لم يعجبك الناتج.",
+        },
+        {
+          q: "هل هناك حد يومي؟",
+          a: "لا. لا حسابات ولا اشتراك ولا عدّاد. الحد الوحيد هو ٢٥ ميجابايت للصورة و٣٠ صورة في الدفعة، وهو حدّ ذاكرة المتصفح لا حدّ خدمة.",
+        },
+      ],
+    },
+    resize: {
+      nav: "تغيير أبعاد الصور",
+      h1: "تغيير أبعاد الصور دفعة واحدة",
+      meta: "صغّر أبعاد صورك إلى ١٩٢٠ أو ١٢٨٠ بكسل أو أي مقاس، مع الحفاظ على النسبة، داخل متصفحك وبلا رفع.",
+      intro:
+        "اختر أقصى بُعد وستُصغَّر كل الصور إليه مع الحفاظ على نسبة العرض إلى الارتفاع. الصور الأصغر من الحد تبقى كما هي دون تكبير.",
+      body: [
+        {
+          h: "لماذا تغيير الأبعاد قبل الضغط؟",
+          p: "أكبر هدر في صور المواقع هو عرض صورة بعرض ٦٠٠٠ بكسل في مساحة عرضها ٨٠٠ بكسل. المتصفح يُنزّل الصورة كاملة ثم يصغّرها للعرض، فتدفع ثمن البكسلات الزائدة كلها. تصغير الأبعاد أولاً يوفّر أكثر بكثير من رفع نسبة الضغط.",
+        },
+        {
+          h: "ما المقاس المناسب؟",
+          p: "‏١٩٢٠ بكسل يكفي لصورة تملأ عرض الشاشة، و١٢٨٠ لصور المقالات، و٨٠٠ لصور المنتجات في شبكة عرض. للشاشات عالية الكثافة ضاعف المقاس المطلوب مرة واحدة فقط.",
+        },
+        {
+          h: "النسبة محفوظة دائماً",
+          p: "نطبّق أقصى بُعد على الضلع الأطول ونحسب الآخر تلقائياً، فلا تتشوّه الصورة ولا تحتاج حساب المقاسات يدوياً لكل صورة.",
+        },
+      ],
+      faq: [
+        {
+          q: "هل تُقصّ الصورة؟",
+          a: "لا. نصغّر الصورة كاملة مع الحفاظ على نسبتها، ولا نقتطع أي جزء منها.",
+        },
+        {
+          q: "هل تُكبَّر الصور الصغيرة؟",
+          a: "لا. الصورة الأصغر من الحد المختار تبقى بأبعادها الأصلية — التكبير يفقد الحدّة ولا يضيف تفاصيل.",
+        },
+        {
+          q: "هل أستطيع تغيير الأبعاد دون ضغط؟",
+          a: "اختر مستوى الضغط «خفيف» مع أقصى بُعد المطلوب، فتحصل على تصغير أبعاد بأقل تدخّل ممكن في الجودة.",
+        },
+      ],
+    },
+    convert: {
+      nav: "تحويل صيغ الصور",
+      h1: "تحويل الصور إلى WebP وAVIF وJPG وPNG",
+      meta: "حوّل صورك بين WebP وAVIF وJPG وPNG داخل متصفحك، دفعة واحدة وبلا رفع إلى أي خادم.",
+      intro:
+        "اختر صيغة الإخراج وستُحوَّل كل الصور إليها مع ضغطها في الوقت نفسه. الصيغة الافتراضية هنا WebP لأنها الأنسب للويب اليوم.",
+      body: [
+        {
+          h: "WebP أم AVIF؟",
+          p: "‏WebP أصغر من JPG بنحو ٢٥–٣٥٪ بنفس الجودة، ويدعمه كل متصفح مستخدَم اليوم — فهو الخيار الآمن. أما AVIF فيوفّر أكثر منه بفارق ملموس، لكن ترميزه أبطأ ودعمه أحدث. للمتاجر والمواقع العامة ابدأ بـ WebP.",
+        },
+        {
+          h: "متى تبقى على JPG أو PNG؟",
+          p: "أبقِ على JPG إن كنت ترفع الصور إلى منصة لا تقبل غيره. وأبقِ على PNG إن كانت الصورة تحتاج شفافية حقيقية ولا تريد تحويلها إلى WebP — مع أن WebP يدعم الشفافية أيضاً وبحجم أقل.",
+        },
+        {
+          h: "الشفافية والصيغ",
+          p: "‏JPG لا يدعم الشفافية إطلاقاً، فعند التحويل إليه نملأ المناطق الشفافة بالأبيض بدل أن تظهر سوداء. أما WebP وAVIF وPNG فتحافظ على الشفافية كما هي.",
+        },
+      ],
+      faq: [
+        {
+          q: "هل يدعم متصفحي WebP؟",
+          a: "نعم. كل المتصفحات المستخدمة اليوم تدعم WebP — Chrome وFirefox وSafari وEdge.",
+        },
+        {
+          q: "ماذا يحدث لصور GIF؟",
+          a: "تُحوَّل إلى صورة ثابتة لأن ترميز GIF المتحرك غير ممكن عبر canvas. نختار PNG للحفاظ على الشفافية، أو JPG إن عطّلت خيار الشفافية.",
+        },
+        {
+          q: "هل يمكن التحويل دون فقدان جودة؟",
+          a: "التحويل إلى PNG بلا فقدان. أما WebP وAVIF وJPG فبفقدان افتراضاً — ارفع الجودة إلى ٩٥ أو أكثر إن أردت أقرب نتيجة للأصل.",
+        },
+      ],
+    },
+    exif: {
+      nav: "إزالة بيانات EXIF",
+      h1: "إزالة بيانات EXIF من الصور",
+      meta: "احذف بيانات الكاميرا والموقع الجغرافي من صورك قبل نشرها — داخل متصفحك وبلا رفع إلى أي خادم.",
+      intro:
+        "كل صورة تلتقطها بهاتفك تحمل بيانات مخفيّة: طراز الجهاز، وتاريخ الالتقاط، وغالباً إحداثيات المكان بدقة. هذه الأداة تحذفها.",
+      body: [
+        {
+          h: "ما الذي تكشفه صورك عنك؟",
+          p: "بيانات EXIF قد تتضمّن خط الطول والعرض بدقة أمتار، ووقت الالتقاط بالثانية، وطراز الهاتف ورقمه التسلسلي أحياناً. نشر صورة من منزلك على موقع أو سوق إلكتروني قد يكشف عنوانك حرفياً دون أن تدري.",
+        },
+        {
+          h: "كيف نحذفها؟",
+          p: "نعيد رسم الصورة على لوحة جديدة ثم نرمّزها من الصفر. الناتج يحمل بيانات الصورة وحدها بلا أي بيانات وصفية موروثة — وهي طريقة أوثق من محاولة تعديل الحقول واحداً واحداً.",
+        },
+        {
+          h: "الاتجاه محفوظ",
+          p: "بعض أدوات حذف EXIF تُفقد الصورة اتجاهها فتظهر مقلوبة. نطبّق دوران EXIF على الصورة أولاً ثم نحذف البيانات، فتبقى الصورة معتدلة كما تراها.",
+        },
+      ],
+      faq: [
+        {
+          q: "هل الحذف نهائي؟",
+          a: "نعم. الملف الناتج يُرمَّز من جديد ولا يحمل أي بيانات وصفية من الأصل. ملفك الأصلي على جهازك يبقى كما هو دون تعديل.",
+        },
+        {
+          q: "هل تتأثر جودة الصورة؟",
+          a: "إعادة الترميز ضرورية للحذف الموثوق. اختر مستوى ضغط «خفيف» لتبقى الجودة قريبة جداً من الأصل.",
+        },
+        {
+          q: "هل يُحذف الموقع الجغرافي؟",
+          a: "نعم، إحداثيات GPS جزء من بيانات EXIF وتُحذف معها بالكامل.",
+        },
+      ],
+    },
+  },
 };
 
 const en: typeof ar = {
@@ -162,6 +309,153 @@ const en: typeof ar = {
     convert: { t: "Convert and resize", d: "Between JPG, PNG, WebP and AVIF, with resizing." },
   },
   footer: { rights: "All rights reserved", made: "Runs entirely in your browser" },
+  toolsNav: { title: "Tools", others: "Other tools" },
+  tools: {
+    compress: {
+      nav: "Compress images",
+      h1: "Compress images online without uploading",
+      meta: "Compress JPG, PNG, WebP and AVIF right inside your browser. Up to 80% smaller with no visible difference, and nothing is ever uploaded.",
+      intro:
+        "Drop your images and they are compressed immediately, inside your browser. No upload, no queue, no daily cap — and no image ever leaves your device.",
+      body: [
+        {
+          h: "Why image size matters",
+          p: "Images are the bulk of what a page weighs. A slow page means a visitor who leaves before your product renders, and a weaker position in search, because Google measures load speed as part of page experience. Taking an image from 4 MB to 400 KB cuts its load time roughly tenfold with nothing a visitor would notice.",
+        },
+        {
+          h: "How the quality level is chosen",
+          p: "Auto mode looks at each image's size and format and picks a quality for that image alone: large photos absorb harder compression invisibly, small ones need a gentler touch. For full control pick Custom quality, move the slider between 1 and 100, and judge the result yourself.",
+        },
+        {
+          h: "Supported formats",
+          p: "JPG, PNG, WebP, AVIF and GIF, up to 25 MB per image and 30 images per batch. Keep the original format or convert to a newer one while compressing.",
+        },
+      ],
+      faq: [
+        {
+          q: "Are my images uploaded to a server?",
+          a: "No. Everything runs in your browser through Web Workers, and not one byte of your images is sent to any server — ours or anyone else's.",
+        },
+        {
+          q: "How much will I save?",
+          a: "It depends on the image and format. Photographic JPGs typically save 60–85%. Flat-colour PNGs often save more, especially when converted to WebP.",
+        },
+        {
+          q: "Does quality suffer?",
+          a: "Lossy compression discards detail your eye does not resolve at normal viewing size. Use the Compare control to judge it yourself before downloading, and raise the quality if you are not satisfied.",
+        },
+        {
+          q: "Is there a daily limit?",
+          a: "No. No accounts, no subscription, no counter. The only limits are 25 MB per image and 30 images per batch, and those are browser memory limits rather than service limits.",
+        },
+      ],
+    },
+    resize: {
+      nav: "Resize images",
+      h1: "Resize images in bulk",
+      meta: "Scale your images down to 1920px, 1280px or any size, aspect ratio preserved, inside your browser with no upload.",
+      intro:
+        "Pick a maximum dimension and every image is scaled down to it with its aspect ratio intact. Images already smaller than the limit are left untouched.",
+      body: [
+        {
+          h: "Why resize before compressing",
+          p: "The biggest waste in web imagery is serving a 6000px-wide photo into an 800px-wide slot. The browser downloads the whole thing and then shrinks it for display, so you pay for every surplus pixel. Cutting dimensions first saves far more than turning compression up ever will.",
+        },
+        {
+          h: "Which size to pick",
+          p: "1920px covers a full-width hero, 1280px suits article images, and 800px is plenty for product thumbnails in a grid. For high-density screens, double your target once — no more than that.",
+        },
+        {
+          h: "Aspect ratio is always kept",
+          p: "The maximum applies to the longer side and the other is derived from it, so nothing is stretched and you never have to work out per-image dimensions by hand.",
+        },
+      ],
+      faq: [
+        {
+          q: "Does it crop the image?",
+          a: "No. The whole image is scaled down with its proportions intact — nothing is cut off.",
+        },
+        {
+          q: "Are small images enlarged?",
+          a: "No. An image already smaller than your chosen limit keeps its original dimensions. Upscaling costs sharpness and invents no detail.",
+        },
+        {
+          q: "Can I resize without compressing?",
+          a: "Choose the Light compression level along with your maximum dimension, and you get the resize with as little quality change as possible.",
+        },
+      ],
+    },
+    convert: {
+      nav: "Convert image format",
+      h1: "Convert images to WebP, AVIF, JPG and PNG",
+      meta: "Convert between WebP, AVIF, JPG and PNG inside your browser, in bulk, with nothing uploaded to a server.",
+      intro:
+        "Pick an output format and every image is converted to it and compressed in the same pass. The default here is WebP, the best general choice for the web today.",
+      body: [
+        {
+          h: "WebP or AVIF?",
+          p: "WebP is roughly 25–35% smaller than JPG at matching quality and is supported by every browser in current use, which makes it the safe pick. AVIF goes meaningfully smaller still, but encodes more slowly and is newer. For shops and general websites, start with WebP.",
+        },
+        {
+          h: "When to stay on JPG or PNG",
+          p: "Stay on JPG if you are uploading to a platform that accepts nothing else. Stay on PNG if an image needs genuine transparency and you would rather not move it to WebP — though WebP supports transparency too, at a smaller size.",
+        },
+        {
+          h: "Transparency across formats",
+          p: "JPG has no transparency at all, so when converting to it we fill transparent areas with white rather than letting them turn black. WebP, AVIF and PNG all preserve transparency as-is.",
+        },
+      ],
+      faq: [
+        {
+          q: "Does my browser support WebP?",
+          a: "Yes. Every browser in current use supports WebP — Chrome, Firefox, Safari and Edge.",
+        },
+        {
+          q: "What happens to GIFs?",
+          a: "They become a still image, because animated GIF cannot be encoded through canvas. We pick PNG to keep transparency, or JPG if you have turned transparency off.",
+        },
+        {
+          q: "Can I convert without losing quality?",
+          a: "Converting to PNG is lossless. WebP, AVIF and JPG are lossy by default — push quality to 95 or above for the closest result to the original.",
+        },
+      ],
+    },
+    exif: {
+      nav: "Remove EXIF data",
+      h1: "Remove EXIF data from images",
+      meta: "Strip camera and GPS location metadata from your photos before publishing them — in your browser, with no upload.",
+      intro:
+        "Every photo your phone takes carries hidden data: the device model, the moment it was taken, and usually the exact coordinates of where you stood. This tool removes it.",
+      body: [
+        {
+          h: "What your photos reveal",
+          p: "EXIF data can carry latitude and longitude accurate to a few metres, a capture time down to the second, and sometimes the phone model and serial number. Posting a photo taken at home to a site or a marketplace can publish your address without you realising it.",
+        },
+        {
+          h: "How it is removed",
+          p: "The image is redrawn onto a fresh canvas and re-encoded from scratch. The result carries pixel data and nothing inherited — a more dependable approach than trying to blank individual metadata fields.",
+        },
+        {
+          h: "Orientation is preserved",
+          p: "Some EXIF strippers leave photos sideways, because the rotation lived in the metadata they deleted. We apply the EXIF rotation to the pixels first and then discard the data, so the image stays the way you see it.",
+        },
+      ],
+      faq: [
+        {
+          q: "Is the removal permanent?",
+          a: "Yes. The output file is re-encoded and carries no metadata from the original. Your original file on disk is left untouched.",
+        },
+        {
+          q: "Does it affect image quality?",
+          a: "Re-encoding is what makes the removal dependable. Choose the Light compression level to keep quality very close to the original.",
+        },
+        {
+          q: "Is GPS location removed?",
+          a: "Yes. GPS coordinates are part of EXIF and are removed along with everything else.",
+        },
+      ],
+    },
+  },
 };
 
 export const dictionaries = { ar, en };

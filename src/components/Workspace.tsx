@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { FileArchive, ImageDown, RefreshCw, Trash2 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import type { Dictionary } from "@/i18n/dictionaries";
+import type { CompressionSettings } from "@/lib/types";
 import { formatBytes, renameWithExt } from "@/lib/utils";
 import { compressFile, terminateWorker } from "@/lib/compressor";
 import Dropzone from "./Dropzone";
@@ -29,14 +30,30 @@ function uniqueName(name: string, taken: Set<string>): string {
   return out;
 }
 
-export default function Workspace({ t, locale }: { t: Dictionary; locale: string }) {
+export default function Workspace({
+  t,
+  locale,
+  preset,
+}: {
+  t: Dictionary;
+  locale: string;
+  /** إعدادات تُطبَّق مرة عند فتح صفحة أداة، فتصل الأداة جاهزة لغرضها */
+  preset?: Partial<CompressionSettings>;
+}) {
   const jobs = useAppStore((s) => s.jobs);
   const settings = useAppStore((s) => s.settings);
+  const setSettings = useAppStore((s) => s.setSettings);
   const clearAll = useAppStore((s) => s.clearAll);
   const recompressAll = useAppStore((s) => s.recompressAll);
   const isWorking = useAppStore((s) => s.isWorking);
   const [busy, setBusy] = useState<"zip" | "jpeg" | null>(null);
   const [converted, setConverted] = useState(0);
+
+  // مرة واحدة عند التركيب فقط — لا نريد أن نُلغي تعديلات المستخدم بعدها
+  useEffect(() => {
+    if (preset) setSettings(preset);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // ننهي الـ Worker ونحرّر عناوين blob عند مغادرة الصفحة
   useEffect(() => () => terminateWorker(), []);
