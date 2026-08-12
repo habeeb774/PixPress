@@ -65,6 +65,7 @@ export function compressFile(
       quality: quality / 100,
       mime,
       maxDimension: settings.maxDimension,
+      targetBytes: Math.max(0, settings.targetKB) * 1024,
       keepTransparency: settings.keepTransparency,
     });
   });
@@ -83,6 +84,8 @@ async function fallbackCompress(
     initialQuality: quality / 100,
     fileType: mime,
     maxWidthOrHeight: settings.maxDimension || undefined,
+    // المكتبة تتولّى بلوغ الحجم المستهدف بنفسها على هذا المسار
+    maxSizeMB: settings.targetKB > 0 ? settings.targetKB / 1024 : undefined,
     useWebWorker: true,
     preserveExif: !settings.stripExif,
     onProgress,

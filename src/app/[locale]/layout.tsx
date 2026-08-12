@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Alexandria } from "next/font/google";
 import { dir, isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { GOOGLE_SITE_VERIFICATION, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ThemeScript from "@/components/ThemeScript";
@@ -59,7 +59,6 @@ export async function generateMetadata({
       images: ["/og.png"],
     },
     robots: { index: true, follow: true },
-    verification: { google: GOOGLE_SITE_VERIFICATION },
     icons: { icon: "/favicon.svg" },
   };
 }
@@ -98,7 +97,6 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       <head>
         <ThemeScript />
-        <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

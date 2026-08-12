@@ -12,8 +12,8 @@ export function isToolSlug(v: string): v is ToolSlug {
  * تُطبَّق عند فتح الصفحة فيجد المستخدم الأداة جاهزة لغرضها دون ضبط يدوي.
  */
 export const toolPresets: Record<ToolSlug, Partial<CompressionSettings>> = {
-  compress: { preset: "auto", format: "original", maxDimension: 0 },
-  resize: { preset: "light", format: "original", maxDimension: 1920 },
-  convert: { preset: "auto", format: "webp", maxDimension: 0 },
-  exif: { preset: "light", format: "original", maxDimension: 0, stripExif: true },
+  compress: { preset: "auto", format: "original", maxDimension: 0, targetKB: 0 },
+  resize: { preset: "light", format: "original", maxDimension: 1920, targetKB: 0 },
+  convert: { preset: "auto", format: "webp", maxDimension: 0, targetKB: 0 },
+  exif: { preset: "light", format: "original", maxDimension: 0, targetKB: 0, stripExif: true },
 };

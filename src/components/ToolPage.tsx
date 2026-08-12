@@ -39,13 +39,27 @@ export default function ToolPage({ locale, slug }: { locale: Locale; slug: ToolS
       <Workspace t={t} locale={locale} preset={toolPresets[slug]} />
 
       <section className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-14">
-        <div className="mx-auto max-w-3xl space-y-8 px-5">
-          {tool.body.map((s) => (
-            <div key={s.h}>
-              <h2 className="mb-2 text-xl font-semibold">{s.h}</h2>
-              <p className="leading-relaxed text-[var(--color-ink-soft)]">{s.p}</p>
-            </div>
-          ))}
+        <div className="mx-auto max-w-3xl px-5">
+          <h2 className="mb-6 text-2xl font-bold">{t.howto.title}</h2>
+          <ol className="space-y-4">
+            {tool.steps.map((s, i) => (
+              <li key={s} className="flex gap-4">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--color-brand)] text-sm font-bold text-white">
+                  {i + 1}
+                </span>
+                <p className="pt-1 leading-relaxed text-[var(--color-ink-soft)]">{s}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-12 space-y-8">
+            {tool.body.map((s) => (
+              <div key={s.h}>
+                <h2 className="mb-2 text-xl font-semibold">{s.h}</h2>
+                <p className="leading-relaxed text-[var(--color-ink-soft)]">{s.p}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

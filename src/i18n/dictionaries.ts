@@ -28,7 +28,19 @@ const ar = {
     stripExif: "إزالة بيانات EXIF",
     keepAlpha: "الحفاظ على الشفافية",
     apply: "إعادة الضغط بالإعدادات الجديدة",
+    social: "مقاسات جاهزة",
+    target: "حجم الملف المستهدف",
+    noTarget: "بلا هدف",
+    targetHint: "عند تحديد هدف نضبط الجودة تلقائياً للوصول إليه، ويتقدّم على مستوى الضغط المختار.",
   },
+  social: {
+    post: "منشور",
+    story: "ستوري",
+    cover: "غلاف",
+    thumb: "مصغّرة",
+    product: "منتج",
+  },
+  howto: { title: "كيف تستخدمها" },
   job: {
     original: "الأصلية",
     compressed: "المضغوطة",
@@ -102,6 +114,12 @@ const ar = {
           p: "JPG وPNG وWebP وAVIF وGIF، حتى ٢٥ ميجابايت للصورة و٣٠ صورة في الدفعة الواحدة. تستطيع إبقاء الصيغة كما هي أو التحويل إلى صيغة أحدث أثناء الضغط.",
         },
       ],
+      steps: [
+        "اسحب صورك إلى الصفحة أو اضغط «اختر الصور» — حتى ٣٠ صورة معاً.",
+        "اضبط مستوى الضغط، أو حدّد حجماً مستهدفاً بالكيلوبايت وسنصل إليه تلقائياً.",
+        "افتح «مقارنة» لتفحص الفرق بين الأصل والناتج قبل أن تعتمده.",
+        "نزّل صورة واحدة، أو الكل دفعةً في ملف ZIP.",
+      ],
       faq: [
         {
           q: "هل تُرفع صوري إلى خادم؟",
@@ -118,6 +136,38 @@ const ar = {
         {
           q: "هل هناك حد يومي؟",
           a: "لا. لا حسابات ولا اشتراك ولا عدّاد. الحد الوحيد هو ٢٥ ميجابايت للصورة و٣٠ صورة في الدفعة، وهو حدّ ذاكرة المتصفح لا حدّ خدمة.",
+        },
+        {
+          q: "كيف أضغط صورة إلى حجم محدّد بالضبط؟",
+          a: "اختر الحجم المستهدف من أزرار «حجم الملف المستهدف» — ١٠٠ أو ٢٠٠ أو ٥٠٠ كيلوبايت — وسنجرّب مستويات جودة متتالية حتى نصل إلى أقرب ناتج لا يتجاوز هدفك.",
+        },
+        {
+          q: "هل يعمل على الجوال؟",
+          a: "نعم، على iPhone وAndroid بالمتصفح مباشرة دون تثبيت تطبيق. المعالجة تستهلك ذاكرة الجهاز، فالدفعات الكبيرة جداً قد تكون أبطأ على هاتف قديم.",
+        },
+        {
+          q: "هل يعمل بدون إنترنت؟",
+          a: "بعد تحميل الصفحة، الضغط نفسه لا يحتاج اتصالاً لأنه يجري محلياً بالكامل.",
+        },
+        {
+          q: "هل أحتاج حساباً أو تسجيلاً؟",
+          a: "لا. لا تسجيل ولا بريد ولا بطاقة. افتح الصفحة واستخدمها.",
+        },
+        {
+          q: "ما أقصى حجم للصورة الواحدة؟",
+          a: "‏٢٥ ميجابايت. الحد موضوع لحماية ذاكرة المتصفح من الاستنزاف، لا لتقييد الاستخدام.",
+        },
+        {
+          q: "هل تُحذف بيانات EXIF أثناء الضغط؟",
+          a: "نعم افتراضياً، لأن إعادة الترميز تُسقطها. تستطيع تعطيل الخيار من لوحة الإعدادات إن أردت الاحتفاظ بها.",
+        },
+        {
+          q: "ما الفرق بينكم وبين أدوات الضغط الأخرى؟",
+          a: "معظمها يرفع صورك إلى خادمه ثم يعيدها. نحن لا نرفع شيئاً — ولهذا لا يوجد طابور انتظار ولا حد يومي ولا سؤال عمّا يحدث لصورك بعد المعالجة.",
+        },
+        {
+          q: "هل يدعم AVIF؟",
+          a: "نعم، ضغطاً وتحويلاً. وهي صيغة توفّر أكثر من WebP لكن ترميزها أبطأ.",
         },
       ],
     },
@@ -141,6 +191,12 @@ const ar = {
           p: "نطبّق أقصى بُعد على الضلع الأطول ونحسب الآخر تلقائياً، فلا تتشوّه الصورة ولا تحتاج حساب المقاسات يدوياً لكل صورة.",
         },
       ],
+      steps: [
+        "اسحب صورك إلى الصفحة — حتى ٣٠ صورة في الدفعة.",
+        "اختر أقصى بُعد من القائمة، أو اضغط أحد المقاسات الجاهزة مثل «منشور» أو «منتج».",
+        "راجع الأبعاد الناتجة على بطاقة كل صورة.",
+        "نزّل صورة واحدة أو الكل دفعةً واحدة.",
+      ],
       faq: [
         {
           q: "هل تُقصّ الصورة؟",
@@ -153,6 +209,26 @@ const ar = {
         {
           q: "هل أستطيع تغيير الأبعاد دون ضغط؟",
           a: "اختر مستوى الضغط «خفيف» مع أقصى بُعد المطلوب، فتحصل على تصغير أبعاد بأقل تدخّل ممكن في الجودة.",
+        },
+        {
+          q: "ما مقاس صور إنستغرام؟",
+          a: "المنشور المربّع ١٠٨٠ بكسل، والستوري ١٠٨٠×١٩٢٠. اضغط زر «منشور» أو «ستوري» في الإعدادات وسيُضبط الحد تلقائياً.",
+        },
+        {
+          q: "ما المقاس المناسب لصور المنتجات؟",
+          a: "‏١٢٠٠ بكسل يغطّي معظم المتاجر ويكفي للتكبير عند التصفّح. زر «منتج» يضبطه لك مباشرة.",
+        },
+        {
+          q: "كيف أصغّر عدة صور بمقاس واحد؟",
+          a: "اسحبها كلها دفعةً واحدة واختر أقصى بُعد مرة واحدة — يُطبَّق على كل صور الدفعة.",
+        },
+        {
+          q: "هل تتشوّه الصورة؟",
+          a: "لا. نطبّق الحد على الضلع الأطول ونحسب الآخر من النسبة، فلا يحدث تمدّد ولا انضغاط.",
+        },
+        {
+          q: "هل يمكن تحديد عرض وارتفاع مختلفين؟",
+          a: "حالياً نعمل بأقصى بُعد واحد يحفظ النسبة تلقائياً. هذا يغطّي أغلب الحالات ويمنع التشوّه الناتج عن مقاسات لا تطابق نسبة الصورة.",
         },
       ],
     },
@@ -176,6 +252,12 @@ const ar = {
           p: "‏JPG لا يدعم الشفافية إطلاقاً، فعند التحويل إليه نملأ المناطق الشفافة بالأبيض بدل أن تظهر سوداء. أما WebP وAVIF وPNG فتحافظ على الشفافية كما هي.",
         },
       ],
+      steps: [
+        "اسحب صورك إلى الصفحة بأي صيغة مدعومة.",
+        "اختر صيغة الإخراج من «صيغة الإخراج» — الافتراضي WebP.",
+        "اضبط الجودة إن احتجت، أو حدّد حجماً مستهدفاً بالكيلوبايت.",
+        "نزّل الناتج فرادى أو دفعةً واحدة.",
+      ],
       faq: [
         {
           q: "هل يدعم متصفحي WebP؟",
@@ -188,6 +270,26 @@ const ar = {
         {
           q: "هل يمكن التحويل دون فقدان جودة؟",
           a: "التحويل إلى PNG بلا فقدان. أما WebP وAVIF وJPG فبفقدان افتراضاً — ارفع الجودة إلى ٩٥ أو أكثر إن أردت أقرب نتيجة للأصل.",
+        },
+        {
+          q: "كيف أحوّل JPG إلى WebP؟",
+          a: "اسحب صور JPG واختر WebP من صيغة الإخراج — وهي الصيغة الافتراضية في هذه الصفحة، فغالباً لن تحتاج تغيير شيء.",
+        },
+        {
+          q: "كيف أحوّل PNG إلى JPG؟",
+          a: "اختر JPEG من صيغة الإخراج. انتبه أن الشفافية ستُملأ بالأبيض لأن JPG لا يدعمها.",
+        },
+        {
+          q: "كيف أحوّل WebP إلى JPG؟",
+          a: "اسحب ملفات WebP واختر JPEG — مفيد عند الرفع إلى منصة قديمة لا تقبل WebP.",
+        },
+        {
+          q: "أيّهما أصغر: WebP أم AVIF؟",
+          a: "‏AVIF أصغر عادةً بفارق ملموس عند الجودة نفسها، لكن ترميزه أبطأ محسوسياً في الدفعات الكبيرة.",
+        },
+        {
+          q: "هل يمكن تحويل عدة صيغ مختلطة معاً؟",
+          a: "نعم. اسحب JPG وPNG وWebP معاً واختر صيغة إخراج واحدة — تُوحَّد كلها إليها.",
         },
       ],
     },
@@ -211,6 +313,12 @@ const ar = {
           p: "بعض أدوات حذف EXIF تُفقد الصورة اتجاهها فتظهر مقلوبة. نطبّق دوران EXIF على الصورة أولاً ثم نحذف البيانات، فتبقى الصورة معتدلة كما تراها.",
         },
       ],
+      steps: [
+        "اسحب الصور التي تنوي نشرها إلى الصفحة.",
+        "تأكّد أن خيار «إزالة بيانات EXIF» مفعّل — وهو مفعّل افتراضياً هنا.",
+        "اختر مستوى ضغط «خفيف» إن أردت أقل تغيير ممكن في الجودة.",
+        "نزّل الصور النظيفة وانشرها بأمان.",
+      ],
       faq: [
         {
           q: "هل الحذف نهائي؟",
@@ -223,6 +331,26 @@ const ar = {
         {
           q: "هل يُحذف الموقع الجغرافي؟",
           a: "نعم، إحداثيات GPS جزء من بيانات EXIF وتُحذف معها بالكامل.",
+        },
+        {
+          q: "كيف أعرف أن صورتي تحمل بيانات EXIF؟",
+          a: "أغلب ما يُلتقط بكاميرا هاتف أو كاميرا احترافية يحملها. لقطات الشاشة والصور المصمّمة غالباً لا تحملها.",
+        },
+        {
+          q: "هل تحذف المنصّات هذه البيانات تلقائياً؟",
+          a: "بعضها يفعل عند النشر، وبعضها لا — خصوصاً عند الإرسال كملف أصلي في محادثة أو بريد. لا تعتمد على ذلك.",
+        },
+        {
+          q: "هل تظهر الصورة مقلوبة بعد الحذف؟",
+          a: "لا. نطبّق دوران EXIF على البكسلات قبل حذف البيانات، وهي مشكلة شائعة في أدوات أخرى.",
+        },
+        {
+          q: "هل يمكن حذف البيانات من عدة صور معاً؟",
+          a: "نعم، حتى ٣٠ صورة في الدفعة الواحدة.",
+        },
+        {
+          q: "هل تحتفظون بنسخة من صوري؟",
+          a: "لا. لا تصل صورك إلينا أساساً — كل شيء يجري داخل متصفحك.",
         },
       ],
     },
@@ -257,7 +385,20 @@ const en: typeof ar = {
     stripExif: "Remove EXIF data",
     keepAlpha: "Keep transparency",
     apply: "Recompress with new settings",
+    social: "Common sizes",
+    target: "Target file size",
+    noTarget: "No target",
+    targetHint:
+      "With a target set, quality is tuned automatically to reach it, overriding the compression level above.",
   },
+  social: {
+    post: "Post",
+    story: "Story",
+    cover: "Cover",
+    thumb: "Thumb",
+    product: "Product",
+  },
+  howto: { title: "How to use it" },
   job: {
     original: "Original",
     compressed: "Compressed",
@@ -317,6 +458,12 @@ const en: typeof ar = {
       meta: "Compress JPG, PNG, WebP and AVIF right inside your browser. Up to 80% smaller with no visible difference, and nothing is ever uploaded.",
       intro:
         "Drop your images and they are compressed immediately, inside your browser. No upload, no queue, no daily cap — and no image ever leaves your device.",
+      steps: [
+        "Drop your images onto the page or press Choose images — up to 30 at once.",
+        "Set the compression level, or name a target size in KB and we will reach it for you.",
+        "Open Compare to inspect the difference against the original before you commit.",
+        "Download one image, or the whole batch as a ZIP.",
+      ],
       body: [
         {
           h: "Why image size matters",
@@ -348,6 +495,38 @@ const en: typeof ar = {
           q: "Is there a daily limit?",
           a: "No. No accounts, no subscription, no counter. The only limits are 25 MB per image and 30 images per batch, and those are browser memory limits rather than service limits.",
         },
+        {
+          q: "How do I compress an image to an exact size?",
+          a: "Pick a value under Target file size — 100, 200 or 500 KB — and we try successive quality levels until we land as close as possible without exceeding your target.",
+        },
+        {
+          q: "Does it work on mobile?",
+          a: "Yes, on iPhone and Android straight from the browser with nothing to install. Processing uses device memory, so very large batches can be slower on an older phone.",
+        },
+        {
+          q: "Does it work offline?",
+          a: "Once the page has loaded, compression itself needs no connection because it all happens locally.",
+        },
+        {
+          q: "Do I need an account?",
+          a: "No. No sign-up, no email, no card. Open the page and use it.",
+        },
+        {
+          q: "What is the maximum file size?",
+          a: "25 MB per image. The limit protects browser memory from being exhausted rather than restricting use.",
+        },
+        {
+          q: "Is EXIF data removed while compressing?",
+          a: "Yes by default, because re-encoding drops it. You can turn the option off in the settings panel if you want to keep it.",
+        },
+        {
+          q: "How is this different from other compressors?",
+          a: "Most of them upload your images to their server and send them back. We upload nothing — which is why there is no queue, no daily cap, and no question about what happens to your files afterwards.",
+        },
+        {
+          q: "Is AVIF supported?",
+          a: "Yes, for both compression and conversion. It saves more than WebP but encodes more slowly.",
+        },
       ],
     },
     resize: {
@@ -356,6 +535,12 @@ const en: typeof ar = {
       meta: "Scale your images down to 1920px, 1280px or any size, aspect ratio preserved, inside your browser with no upload.",
       intro:
         "Pick a maximum dimension and every image is scaled down to it with its aspect ratio intact. Images already smaller than the limit are left untouched.",
+      steps: [
+        "Drop your images onto the page — up to 30 per batch.",
+        "Pick a maximum dimension, or press a ready size such as Post or Product.",
+        "Check the resulting dimensions on each image card.",
+        "Download one image or the whole batch.",
+      ],
       body: [
         {
           h: "Why resize before compressing",
@@ -383,6 +568,26 @@ const en: typeof ar = {
           q: "Can I resize without compressing?",
           a: "Choose the Light compression level along with your maximum dimension, and you get the resize with as little quality change as possible.",
         },
+        {
+          q: "What size are Instagram images?",
+          a: "A square post is 1080px and a story is 1080×1920. Press the Post or Story button in the settings and the limit is set for you.",
+        },
+        {
+          q: "What size should product photos be?",
+          a: "1200px covers most storefronts and leaves room for zoom on hover. The Product button sets it directly.",
+        },
+        {
+          q: "How do I resize many images to one size?",
+          a: "Drop them all in at once and pick the maximum dimension a single time — it applies across the whole batch.",
+        },
+        {
+          q: "Will the image be distorted?",
+          a: "No. The limit applies to the longer side and the other is derived from the ratio, so nothing is stretched or squashed.",
+        },
+        {
+          q: "Can I set a separate width and height?",
+          a: "We currently work from a single maximum dimension that preserves the ratio automatically. That covers most cases and avoids the distortion that comes from forcing dimensions which do not match the image.",
+        },
       ],
     },
     convert: {
@@ -391,6 +596,12 @@ const en: typeof ar = {
       meta: "Convert between WebP, AVIF, JPG and PNG inside your browser, in bulk, with nothing uploaded to a server.",
       intro:
         "Pick an output format and every image is converted to it and compressed in the same pass. The default here is WebP, the best general choice for the web today.",
+      steps: [
+        "Drop your images onto the page in any supported format.",
+        "Pick the output format — WebP is the default here.",
+        "Adjust quality if you need to, or name a target size in KB.",
+        "Download the results individually or as a batch.",
+      ],
       body: [
         {
           h: "WebP or AVIF?",
@@ -418,6 +629,26 @@ const en: typeof ar = {
           q: "Can I convert without losing quality?",
           a: "Converting to PNG is lossless. WebP, AVIF and JPG are lossy by default — push quality to 95 or above for the closest result to the original.",
         },
+        {
+          q: "How do I convert JPG to WebP?",
+          a: "Drop your JPGs and pick WebP as the output format — it is already the default on this page, so usually you change nothing.",
+        },
+        {
+          q: "How do I convert PNG to JPG?",
+          a: "Pick JPEG as the output format. Note that transparency is filled with white, because JPG cannot store it.",
+        },
+        {
+          q: "How do I convert WebP to JPG?",
+          a: "Drop your WebP files and pick JPEG — useful when uploading to an older platform that will not accept WebP.",
+        },
+        {
+          q: "Which is smaller, WebP or AVIF?",
+          a: "AVIF is usually meaningfully smaller at matching quality, but it encodes noticeably more slowly across a large batch.",
+        },
+        {
+          q: "Can I convert mixed formats at once?",
+          a: "Yes. Drop JPG, PNG and WebP together and pick a single output format — everything is unified to it.",
+        },
       ],
     },
     exif: {
@@ -426,6 +657,12 @@ const en: typeof ar = {
       meta: "Strip camera and GPS location metadata from your photos before publishing them — in your browser, with no upload.",
       intro:
         "Every photo your phone takes carries hidden data: the device model, the moment it was taken, and usually the exact coordinates of where you stood. This tool removes it.",
+      steps: [
+        "Drop the photos you are about to publish onto the page.",
+        "Check that Remove EXIF data is on — it is on by default here.",
+        "Pick the Light compression level if you want the smallest possible change in quality.",
+        "Download the cleaned images and publish them safely.",
+      ],
       body: [
         {
           h: "What your photos reveal",
@@ -452,6 +689,26 @@ const en: typeof ar = {
         {
           q: "Is GPS location removed?",
           a: "Yes. GPS coordinates are part of EXIF and are removed along with everything else.",
+        },
+        {
+          q: "How do I know whether my photo carries EXIF?",
+          a: "Almost anything shot on a phone or a dedicated camera does. Screenshots and designed graphics usually do not.",
+        },
+        {
+          q: "Do platforms strip this automatically?",
+          a: "Some do on publish and some do not — particularly when a file is sent as an original through a chat or an email. Do not rely on it.",
+        },
+        {
+          q: "Will my photo end up sideways?",
+          a: "No. We apply the EXIF rotation to the pixels before discarding the data, which is a common failure in other strippers.",
+        },
+        {
+          q: "Can I clean several photos at once?",
+          a: "Yes, up to 30 images per batch.",
+        },
+        {
+          q: "Do you keep a copy of my photos?",
+          a: "No. Your photos never reach us in the first place — everything happens inside your browser.",
         },
       ],
     },

@@ -16,8 +16,39 @@ function fit(w: number, h: number, max: number) {
   return { w: Math.round(w * r), h: Math.round(h * r) };
 }
 
+/**
+ * بحث ثنائي على الجودة للوصول إلى حجم مستهدف.
+ * ثماني محاولات تكفي لتضييق المجال من ١٠٠ إلى أقل من نقطة واحدة،
+ * ونحتفظ دائماً بأفضل ناتج لا يتجاوز الهدف — وبأصغر ناتج إن تعذّر بلوغه.
+ */
+async function encodeToTarget(
+  canvas: OffscreenCanvas,
+  mime: string,
+  startQuality: number,
+  targetBytes: number
+): Promise<Blob> {
+  let lo = 0.05;
+  let hi = Math.max(startQuality, 0.05);
+  let best = await canvas.convertToBlob({ type: mime, quality: hi });
+  if (best.size <= targetBytes) return best;
+
+  let smallest = best;
+  for (let i = 0; i < 8; i++) {
+    const mid = (lo + hi) / 2;
+    const blob = await canvas.convertToBlob({ type: mime, quality: mid });
+    if (blob.size < smallest.size) smallest = blob;
+    if (blob.size > targetBytes) {
+      hi = mid;
+    } else {
+      best = blob;
+      lo = mid;
+    }
+  }
+  return best.size <= targetBytes ? best : smallest;
+}
+
 self.onmessage = async (e: MessageEvent<WorkerRequest>) => {
-  const { id, file, quality, mime, maxDimension, keepTransparency } = e.data;
+  const { id, file, quality, mime, maxDimension, targetBytes, keepTransparency } = e.data;
   try {
     post({ id, type: "progress", progress: 15 });
 
@@ -48,13 +79,20 @@ self.onmessage = async (e: MessageEvent<WorkerRequest>) => {
     post({ id, type: "progress", progress: 70 });
 
     const primaryQuality = Math.max(0.3, quality);
-    let blob = await canvas.convertToBlob({ type: mime, quality: primaryQuality });
+    let blob: Blob;
 
-    // إذا كان الناتج ما زال كبيرًا جدًا، نكرر الترميز بضغط أقوى.
-    const shouldRetry = blob.size > 1024 * 1024 && primaryQuality > 0.45;
-    if (shouldRetry) {
-      const retryQuality = Math.max(0.3, primaryQuality - 0.15);
-      blob = await canvas.convertToBlob({ type: mime, quality: retryQuality });
+    if (targetBytes > 0) {
+      // الهدف المحدّد يتقدّم على مستوى الجودة المختار
+      blob = await encodeToTarget(canvas, mime, primaryQuality, targetBytes);
+    } else {
+      blob = await canvas.convertToBlob({ type: mime, quality: primaryQuality });
+
+      // إذا كان الناتج ما زال كبيرًا جدًا، نكرر الترميز بضغط أقوى.
+      const shouldRetry = blob.size > 1024 * 1024 && primaryQuality > 0.45;
+      if (shouldRetry) {
+        const retryQuality = Math.max(0.3, primaryQuality - 0.15);
+        blob = await canvas.convertToBlob({ type: mime, quality: retryQuality });
+      }
     }
 
     // بعض المتصفحات تتجاهل صيغة غير مدعومة وترجع PNG أكبر من الأصل

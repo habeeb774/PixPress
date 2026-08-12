@@ -10,6 +10,17 @@ const PRESETS: Preset[] = ["auto", "light", "medium", "strong", "custom"];
 const FORMATS: OutputFormat[] = ["original", "jpeg", "png", "webp", "avif"];
 const SIZES = [0, 3840, 2560, 1920, 1280, 800];
 
+/** مقاسات جاهزة لأكثر الاستخدامات شيوعاً، فلا يبحث المستخدم عن الرقم بنفسه */
+const SOCIAL: { key: keyof Dictionary["social"]; px: number }[] = [
+  { key: "post", px: 1080 },
+  { key: "story", px: 1920 },
+  { key: "cover", px: 1640 },
+  { key: "thumb", px: 400 },
+  { key: "product", px: 1200 },
+];
+
+const TARGETS = [0, 100, 200, 500, 1000];
+
 export default function SettingsPanel({ t }: { t: Dictionary }) {
   const settings = useAppStore((s) => s.settings);
   const setSettings = useAppStore((s) => s.setSettings);
@@ -101,6 +112,52 @@ export default function SettingsPanel({ t }: { t: Dictionary }) {
             ))}
           </select>
         </label>
+
+        <fieldset>
+          <legend className="mb-2 text-sm text-[var(--color-ink-soft)]">{t.settings.social}</legend>
+          <div className="flex flex-wrap gap-2">
+            {SOCIAL.map((s) => (
+              <button
+                key={s.key}
+                type="button"
+                onClick={() => setSettings({ maxDimension: s.px })}
+                aria-pressed={settings.maxDimension === s.px}
+                title={`${s.px} px`}
+                className={cn(
+                  "rounded-full border px-3 py-1.5 text-xs transition",
+                  settings.maxDimension === s.px
+                    ? "border-[var(--color-brand)] bg-[var(--color-brand)] text-white"
+                    : "border-[var(--color-line)] hover:border-[var(--color-brand)]"
+                )}
+              >
+                {t.social[s.key]}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <div className="text-sm">
+          <span className="mb-1.5 block text-[var(--color-ink-soft)]">{t.settings.target}</span>
+          <div className="flex flex-wrap gap-2">
+            {TARGETS.map((kb) => (
+              <button
+                key={kb}
+                type="button"
+                onClick={() => setSettings({ targetKB: kb })}
+                aria-pressed={settings.targetKB === kb}
+                className={cn(
+                  "rounded-full border px-3 py-1.5 text-xs transition",
+                  settings.targetKB === kb
+                    ? "border-[var(--color-brand)] bg-[var(--color-brand)] text-white"
+                    : "border-[var(--color-line)] hover:border-[var(--color-brand)]"
+                )}
+              >
+                {kb === 0 ? t.settings.noTarget : `${kb} KB`}
+              </button>
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-[var(--color-ink-soft)]">{t.settings.targetHint}</p>
+        </div>
 
         <div className="space-y-2 text-sm">
           <Toggle

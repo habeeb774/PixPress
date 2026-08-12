@@ -10,6 +10,8 @@ export interface CompressionSettings {
   format: OutputFormat;
   /** أقصى عرض/ارتفاع بالبكسل. 0 = إبقاء الأبعاد الأصلية */
   maxDimension: number;
+  /** حجم الملف المطلوب بالكيلوبايت. 0 = بلا هدف، فتُستخدم الجودة كما هي */
+  targetKB: number;
   stripExif: boolean;
   keepTransparency: boolean;
 }
@@ -40,6 +42,8 @@ export interface WorkerRequest {
   quality: number; // 0..1
   mime: string;
   maxDimension: number;
+  /** حجم مستهدف بالبايت. 0 = بلا هدف */
+  targetBytes: number;
   keepTransparency: boolean;
 }
 

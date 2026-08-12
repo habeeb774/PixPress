@@ -161,6 +161,19 @@ export const useAppStore = create<AppState>()(
       storage: createJSONStorage(() => localStorage),
       // الملفات وعناوين blob غير قابلة للتخزين — نحفظ الإعدادات والإحصائيات فقط
       partialize: (s) => ({ settings: s.settings, stats: s.stats }),
+      /**
+       * الدمج الافتراضي سطحي، فتحلّ الإعدادات المحفوظة محل الافتراضية بالكامل
+       * ويصل أي إعداد أضفناه لاحقاً غير مُعرّف. ندمج المستوى الثاني يدوياً.
+       */
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<AppState>;
+        return {
+          ...current,
+          ...p,
+          settings: { ...current.settings, ...(p.settings ?? {}) },
+          stats: { ...current.stats, ...(p.stats ?? {}) },
+        };
+      },
     }
   )
 );
