@@ -10,9 +10,9 @@
   --color-surface: #ffffff;
   --color-canvas: #f6f9ff;
   --color-good: #12a37a;
-  /* الإسكندرية عائلة واحدة للعناوين والمتن؛ التمييز يجري بالوزن لا بالخط */
-  --font-display: var(--font-alexandria), "Alexandria", system-ui, sans-serif;
-  --font-body: var(--font-alexandria), "Alexandria", system-ui, sans-serif;
+  /* القاهرة عائلة واحدة للعناوين والمتن؛ التمييز يجري بالوزن لا بالخط */
+  --font-display: var(--font-cairo), "Cairo", system-ui, sans-serif;
+  --font-body: var(--font-cairo), "Cairo", system-ui, sans-serif;
   --radius-card: 18px;
 }
 

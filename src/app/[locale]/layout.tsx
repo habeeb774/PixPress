@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Alexandria } from "next/font/google";
+import { Cairo } from "next/font/google";
 import { dir, isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -10,13 +10,13 @@ import ThemeScript from "@/components/ThemeScript";
 import "../globals.css";
 
 /**
- * خط الإسكندرية يغطّي العربية واللاتينية بعائلة واحدة متغيّرة،
+ * خط القاهرة يغطّي العربية واللاتينية بعائلة واحدة متغيّرة،
  * فنربطه بمتغيّري العرض والنص معاً: وزن ثقيل للعناوين وخفيف للمتن.
  */
-const alexandria = Alexandria({
+const cairo = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "700", "800"],
-  variable: "--font-alexandria",
+  weight: ["300", "400", "500", "700", "900"],
+  variable: "--font-cairo",
   display: "swap",
   preload: true,
 });
@@ -102,7 +102,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className={`${alexandria.variable} min-h-screen flex flex-col`}>
+      <body className={`${cairo.variable} min-h-screen flex flex-col`}>
         <Header locale={locale} t={t} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} t={t} />
