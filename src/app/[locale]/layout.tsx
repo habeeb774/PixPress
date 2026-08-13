@@ -60,7 +60,15 @@ export async function generateMetadata({
       images: ["/og.png"],
     },
     robots: { index: true, follow: true },
-    icons: { icon: "/favicon.svg" },
+    manifest: "/site.webmanifest",
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon-32x32.png", type: "image/png", sizes: "32x32" },
+        { url: "/icon-192x192.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: [{ url: "/icon-180x180.png", sizes: "180x180" }],
+    },
   };
 }
 

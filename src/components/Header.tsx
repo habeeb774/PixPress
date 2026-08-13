@@ -18,8 +18,10 @@ export default function Header({ locale, t }: { locale: Locale; t: Dictionary })
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-5 lg:gap-6">
         <Link href={`/${locale}`} className="flex min-w-0 shrink items-center gap-2 font-semibold">
           <img
-            src="/favicon.svg"
+            src="/icon-64x64.png"
             alt="LeanPix"
+            width={32}
+            height={32}
             className="h-8 w-8 shrink-0 rounded-lg object-contain"
           />
           <span className="display truncate text-lg">{t.brand.name}</span>
