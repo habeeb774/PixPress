@@ -4,6 +4,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { toolPresets, toolSlugs, type ToolSlug } from "@/lib/tools";
 import { SITE_URL } from "@/lib/constants";
 import Workspace from "./Workspace";
+import IconMaker from "./IconMaker";
 
 /**
  * كل أدوات الموقع تشترك في هذا القالب: عنوان الأداة، ثم الأداة نفسها فوراً،
@@ -36,7 +37,11 @@ export default function ToolPage({ locale, slug }: { locale: Locale; slug: ToolS
         <p className="mx-auto mt-4 max-w-xl text-[var(--color-ink-soft)]">{tool.intro}</p>
       </section>
 
-      <Workspace t={t} locale={locale} preset={toolPresets[slug]} />
+      {slug === "icon" ? (
+        <IconMaker t={t} />
+      ) : (
+        <Workspace t={t} locale={locale} preset={toolPresets[slug]} />
+      )}
 
       <section className="border-t border-[var(--color-line)] bg-[var(--color-surface)] py-14">
         <div className="mx-auto max-w-3xl px-5">

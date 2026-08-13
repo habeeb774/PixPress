@@ -41,6 +41,16 @@ const ar = {
     product: "منتج",
   },
   howto: { title: "كيف تستخدمها" },
+  icon: {
+    pick: "اختر صورة لتحويلها إلى أيقونة",
+    pickHint: "‏PNG أو SVG بخلفية شفافة يعطي أفضل نتيجة — ويُفضّل أن تكون مربّعة",
+    fit: "ملاءمة المربّع",
+    contain: "احتواء كامل",
+    cover: "ملء واقتطاع",
+    sizes: "المقاسات المطلوبة",
+    downloadIco: "تنزيل favicon.ico",
+    downloadPack: "تنزيل الحزمة كاملة",
+  },
   job: {
     original: "الأصلية",
     compressed: "المضغوطة",
@@ -293,6 +303,67 @@ const ar = {
         },
       ],
     },
+    icon: {
+      nav: "تحويل صورة إلى أيقونة",
+      h1: "تحويل الصور إلى أيقونات وfavicon",
+      meta: "حوّل أي صورة إلى ملف favicon.ico متعدّد المقاسات وأيقونات PNG جاهزة لموقعك وتطبيقك — داخل متصفحك وبلا رفع.",
+      intro:
+        "اختر صورة واحدة وسنولّد منها ملف أيقونة كامل: favicon.ico يحمل ست مقاسات داخله، وأيقونات PNG لكل المقاسات التي يطلبها المتصفح ونظام التشغيل.",
+      body: [
+        {
+          h: "لماذا لا تكفي صورة واحدة؟",
+          p: "المتصفح يطلب ١٦ و٣٢ بكسل لتبويب الصفحة، وiOS يطلب ١٨٠ لأيقونة الشاشة الرئيسية، وAndroid يطلب ١٩٢ و٥١٢ لملف البيان. إعطاء صورة كبيرة واحدة يجعل كل جهاز يصغّرها بنفسه بنتيجة باهتة عند المقاسات الصغيرة، لذا نولّد كل مقاس على حدة بتنعيم عالي الجودة.",
+        },
+        {
+          h: "ما هو ملف ICO؟",
+          p: "ملف واحد يحوي عدة صور بمقاسات مختلفة، ويختار النظام المقاس المناسب لكل موضع. نضع فيه ١٦ و٣٢ و٤٨ و٦٤ و١٢٨ و٢٥٦ بكسل، وهي التغطية التي تحتاجها المتصفحات وويندوز معاً.",
+        },
+        {
+          h: "احتواء أم اقتطاع؟",
+          p: "الأيقونات مربّعة وصورتك غالباً ليست كذلك. «احتواء كامل» يُبقي الصورة كلها ويضيف هوامش شفافة، وهو الأنسب للشعارات. «ملء واقتطاع» يملأ المربّع ويقتطع الأطراف، وهو الأنسب للصور الفوتوغرافية.",
+        },
+      ],
+      steps: [
+        "اختر صورة — يُفضّل PNG مربّعة بخلفية شفافة.",
+        "اختر طريقة الملاءمة والمقاسات التي تريدها.",
+        "عاين النتيجة بكل مقاس قبل التنزيل.",
+        "نزّل ملف favicon.ico وحده، أو الحزمة كاملة مع أيقونات PNG وملف البيان.",
+      ],
+      faq: [
+        {
+          q: "ما الفرق بين favicon.ico وأيقونات PNG؟",
+          a: "ملف ICO يحوي عدة مقاسات معاً ويفهمه كل متصفح حتى القديم منها. وأيقونات PNG المنفصلة تلزم لـ iOS وAndroid وملف البيان. الحزمة الكاملة تعطيك الاثنين.",
+        },
+        {
+          q: "أين أضع الملفات؟",
+          a: "في جذر موقعك، ثم أضف وسوم الربط المعروضة أسفل الأداة داخل قسم head في صفحاتك.",
+        },
+        {
+          q: "ما أفضل صورة مصدر؟",
+          a: "صورة مربّعة بخلفية شفافة وأبعاد ٥١٢ بكسل أو أكثر. الشعارات البسيطة تظهر أوضح عند ١٦ بكسل من الصور المزدحمة بالتفاصيل.",
+        },
+        {
+          q: "هل تُحفظ الشفافية؟",
+          a: "نعم. كل المقاسات تُولَّد بصيغة PNG داخل ملف ICO وخارجه، وهي تدعم الشفافية بالكامل.",
+        },
+        {
+          q: "هل يدعم SVG؟",
+          a: "نعم، يُرسم على مقاس كل أيقونة مباشرةً فتخرج حادّة تماماً — وهو أفضل مصدر ممكن.",
+        },
+        {
+          q: "ما مقاس أيقونة iOS؟",
+          a: "‏١٨٠ بكسل لوسم apple-touch-icon. وهو مُحدَّد افتراضياً في قائمة المقاسات.",
+        },
+        {
+          q: "هل تُرفع صورتي إلى خادم؟",
+          a: "لا. التوليد كله يجري داخل متصفحك، وملف ICO نفسه يُبنى في الصفحة بايتاً بايتاً.",
+        },
+        {
+          q: "ما ملف site.webmanifest؟",
+          a: "ملف يخبر Android بأيقونات تطبيقك عند إضافة الموقع إلى الشاشة الرئيسية. نولّده جاهزاً داخل الحزمة.",
+        },
+      ],
+    },
     exif: {
       nav: "إزالة بيانات EXIF",
       h1: "إزالة بيانات EXIF من الصور",
@@ -399,6 +470,16 @@ const en: typeof ar = {
     product: "Product",
   },
   howto: { title: "How to use it" },
+  icon: {
+    pick: "Choose an image to turn into an icon",
+    pickHint: "A square PNG or SVG on a transparent background gives the best result",
+    fit: "Fit to square",
+    contain: "Fit whole",
+    cover: "Fill and crop",
+    sizes: "Sizes to generate",
+    downloadIco: "Download favicon.ico",
+    downloadPack: "Download full pack",
+  },
   job: {
     original: "Original",
     compressed: "Compressed",
@@ -648,6 +729,67 @@ const en: typeof ar = {
         {
           q: "Can I convert mixed formats at once?",
           a: "Yes. Drop JPG, PNG and WebP together and pick a single output format — everything is unified to it.",
+        },
+      ],
+    },
+    icon: {
+      nav: "Image to icon",
+      h1: "Convert images to icons and favicons",
+      meta: "Turn any image into a multi-size favicon.ico plus ready PNG icons for your site and app — in your browser, with no upload.",
+      intro:
+        "Pick one image and we generate a complete icon set from it: a favicon.ico carrying six sizes inside, plus PNG icons for every size browsers and operating systems ask for.",
+      body: [
+        {
+          h: "Why one image is not enough",
+          p: "Browsers want 16 and 32 pixels for the tab, iOS wants 180 for the home screen, and Android wants 192 and 512 for the manifest. Handing over a single large image leaves each device to downscale it, which looks muddy at small sizes, so we render every size separately with high-quality smoothing.",
+        },
+        {
+          h: "What an ICO file is",
+          p: "A single file holding several images at different sizes, from which the system picks whichever fits each spot. We put 16, 32, 48, 64, 128 and 256 pixels inside it — the coverage browsers and Windows need between them.",
+        },
+        {
+          h: "Fit whole or fill and crop?",
+          p: "Icons are square and your image usually is not. Fit whole keeps all of it and adds transparent padding, which suits logos. Fill and crop fills the square and trims the edges, which suits photographs.",
+        },
+      ],
+      steps: [
+        "Choose an image — ideally a square PNG on a transparent background.",
+        "Pick the fit mode and the sizes you want.",
+        "Preview every size before downloading.",
+        "Download favicon.ico on its own, or the full pack with PNG icons and a manifest.",
+      ],
+      faq: [
+        {
+          q: "What is the difference between favicon.ico and PNG icons?",
+          a: "The ICO holds several sizes together and every browser understands it, including older ones. Separate PNG icons are what iOS, Android and the web manifest require. The full pack gives you both.",
+        },
+        {
+          q: "Where do the files go?",
+          a: "At the root of your site, then add the link tags shown below the tool into the head of your pages.",
+        },
+        {
+          q: "What makes a good source image?",
+          a: "A square image on a transparent background, 512 pixels or larger. Simple logos read far better at 16 pixels than detailed artwork.",
+        },
+        {
+          q: "Is transparency preserved?",
+          a: "Yes. Every size is generated as PNG, inside the ICO and outside it, and PNG supports transparency fully.",
+        },
+        {
+          q: "Is SVG supported?",
+          a: "Yes, and it is the best possible source — it is drawn at each icon's exact size, so the result is perfectly sharp.",
+        },
+        {
+          q: "What size is an iOS icon?",
+          a: "180 pixels, for the apple-touch-icon tag. It is selected by default in the size list.",
+        },
+        {
+          q: "Is my image uploaded to a server?",
+          a: "No. Generation happens entirely in your browser, and the ICO file itself is assembled byte by byte on the page.",
+        },
+        {
+          q: "What is site.webmanifest?",
+          a: "A file telling Android which icons to use when someone adds your site to their home screen. We generate it ready inside the pack.",
         },
       ],
     },
