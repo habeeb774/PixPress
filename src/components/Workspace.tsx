@@ -151,7 +151,9 @@ export default function Workspace({
 
       {hasJobs && (
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-          <div className="space-y-4">
+          {/* min-w-0 على العمودين: بدونه يبقى min-width:auto فيرفض العمود
+              الانكماش تحت عرض محتواه الأدنى ويفيض التخطيط أفقياً على الجوال */}
+          <div className="min-w-0 space-y-4">
             <Dropzone t={t} compact />
 
             <div className="flex flex-wrap items-center gap-2 rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] p-4">
@@ -212,7 +214,7 @@ export default function Workspace({
             </div>
           </div>
 
-          <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+          <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start">
             <SettingsPanel t={t} />
             <StatsPanel t={t} locale={locale} />
           </aside>
