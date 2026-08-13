@@ -12,10 +12,11 @@ import "../globals.css";
 /**
  * خط القاهرة يغطّي العربية واللاتينية بعائلة واحدة متغيّرة،
  * فنربطه بمتغيّري العرض والنص معاً: وزن ثقيل للعناوين وخفيف للمتن.
+ * الأوزان هنا يجب أن تشمل كل وزن تطلبه globals.css وإلا استعاض المتصفح بأقرب وزن.
  */
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["300", "400", "500", "700", "800"],
   variable: "--font-cairo",
   display: "swap",
   preload: true,
@@ -94,7 +95,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
+    <html lang={locale} dir={dir(locale)} className={cairo.variable} suppressHydrationWarning>
       <head>
         <ThemeScript />
         <script
@@ -102,7 +103,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body className={`${cairo.variable} min-h-screen flex flex-col`}>
+      <body className="min-h-screen flex flex-col">
         <Header locale={locale} t={t} />
         <main className="flex-1">{children}</main>
         <Footer locale={locale} t={t} />
