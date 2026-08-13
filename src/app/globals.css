@@ -42,6 +42,8 @@ body {
   font-family: var(--font-body);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  /* clip لا hidden: الأخير يُنشئ سياق تمرير فيُعطّل الترويسة اللاصقة */
+  overflow-x: clip;
 }
 
 h1, h2, h3, .display {

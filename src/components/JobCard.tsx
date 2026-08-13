@@ -92,13 +92,19 @@ export default function JobCard({ job, t, locale }: { job: ImageJob; t: Dictiona
         />
 
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium">{job.name}</p>
+          {/* أسماء الملفات لاتينية دائماً، فبدون dir صريح يقلبها محرّك الاتجاه في RTL */}
+          <p dir="ltr" className="truncate text-start text-sm font-medium">
+            {job.name}
+          </p>
 
           {done ? (
-            <p className="mt-0.5 text-sm text-[var(--color-ink-soft)]">
-              {formatBytes(job.originalSize, locale)} →{" "}
-              <b className="text-[var(--color-good)]">{formatBytes(job.compressedSize!, locale)}</b>
-              <span className="ms-2 rounded-full bg-[var(--color-good)]/10 px-2 py-0.5 text-xs text-[var(--color-good)]">
+            <p className="mt-0.5 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-[var(--color-ink-soft)]">
+              <span className="whitespace-nowrap">{formatBytes(job.originalSize, locale)}</span>
+              <span aria-hidden>←</span>
+              <b className="whitespace-nowrap text-[var(--color-good)]">
+                {formatBytes(job.compressedSize!, locale)}
+              </b>
+              <span className="whitespace-nowrap rounded-full bg-[var(--color-good)]/10 px-2 py-0.5 text-xs text-[var(--color-good)]">
                 −{saved}%
               </span>
             </p>
