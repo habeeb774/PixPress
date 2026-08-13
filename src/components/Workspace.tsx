@@ -205,8 +205,8 @@ export default function Workspace({
 
             <div className="space-y-3">
               <AnimatePresence mode="popLayout">
-                {jobs.map((job, i) => (
-                  <JobCard key={job.id} job={job} index={i} t={t} locale={locale} />
+                {jobs.map((job) => (
+                  <JobCard key={job.id} job={job} t={t} locale={locale} />
                 ))}
               </AnimatePresence>
             </div>
