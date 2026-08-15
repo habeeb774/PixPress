@@ -121,6 +121,7 @@ const ar = {
   tools: {
     compress: {
       nav: "ضغط الصور",
+      short: "ضغط",
       h1: "ضغط الصور أونلاين مجاناً بدون رفعها",
       meta: "أداة ضغط الصور مجاناً: قلّل حجم الصورة من JPG وPNG وGIF وWebP وAVIF داخل متصفحك، بلا رفع إلى أي خادم وبلا حد يومي.",
       intro:
@@ -222,6 +223,7 @@ const ar = {
     },
     resize: {
       nav: "تغيير أبعاد الصور",
+      short: "الأبعاد",
       h1: "تغيير أبعاد الصور دفعة واحدة",
       meta: "صغّر أبعاد صورك إلى ١٩٢٠ أو ١٢٨٠ بكسل أو أي مقاس، مع الحفاظ على النسبة، داخل متصفحك وبلا رفع.",
       intro:
@@ -283,6 +285,7 @@ const ar = {
     },
     convert: {
       nav: "تحويل صيغ الصور",
+      short: "الصيغ",
       h1: "تحويل الصور إلى WebP وAVIF وJPG وPNG",
       meta: "حوّل صورك بين WebP وAVIF وJPG وPNG داخل متصفحك، دفعة واحدة وبلا رفع إلى أي خادم.",
       intro:
@@ -344,6 +347,7 @@ const ar = {
     },
     pdf: {
       nav: "تحويل الصور إلى PDF",
+      short: "PDF",
       h1: "تحويل الصور إلى PDF مجاناً",
       meta: "حوّل صورة أو عدة صور إلى ملف بي دي اف واحد داخل متصفحك — بترتيب تختاره ومقاس صفحة تحدّده، وبلا رفع إلى أي خادم.",
       intro:
@@ -405,6 +409,7 @@ const ar = {
     },
     icon: {
       nav: "تحويل صورة إلى أيقونة",
+      short: "أيقونة",
       h1: "تحويل الصور إلى أيقونات وfavicon",
       meta: "حوّل أي صورة إلى ملف favicon.ico متعدّد المقاسات وأيقونات PNG جاهزة لموقعك وتطبيقك — داخل متصفحك وبلا رفع.",
       intro:
@@ -466,6 +471,7 @@ const ar = {
     },
     exif: {
       nav: "إزالة بيانات EXIF",
+      short: "EXIF",
       h1: "إزالة بيانات EXIF من الصور",
       meta: "احذف بيانات الكاميرا والموقع الجغرافي من صورك قبل نشرها — داخل متصفحك وبلا رفع إلى أي خادم.",
       intro:
@@ -650,6 +656,7 @@ const en: typeof ar = {
   tools: {
     compress: {
       nav: "Compress images",
+      short: "Compress",
       h1: "Compress images online without uploading",
       meta: "Compress JPG, PNG, WebP and AVIF right inside your browser. Up to 80% smaller with no visible difference, and nothing is ever uploaded.",
       intro:
@@ -727,6 +734,7 @@ const en: typeof ar = {
     },
     resize: {
       nav: "Resize images",
+      short: "Resize",
       h1: "Resize images in bulk",
       meta: "Scale your images down to 1920px, 1280px or any size, aspect ratio preserved, inside your browser with no upload.",
       intro:
@@ -788,6 +796,7 @@ const en: typeof ar = {
     },
     convert: {
       nav: "Convert image format",
+      short: "Convert",
       h1: "Convert images to WebP, AVIF, JPG and PNG",
       meta: "Convert between WebP, AVIF, JPG and PNG inside your browser, in bulk, with nothing uploaded to a server.",
       intro:
@@ -849,6 +858,7 @@ const en: typeof ar = {
     },
     pdf: {
       nav: "Images to PDF",
+      short: "PDF",
       h1: "Convert images to PDF",
       meta: "Combine one or many images into a single PDF inside your browser — your order, your page size, and nothing uploaded to a server.",
       intro:
@@ -902,6 +912,7 @@ const en: typeof ar = {
     },
     icon: {
       nav: "Image to icon",
+      short: "Icon",
       h1: "Convert images to icons and favicons",
       meta: "Turn any image into a multi-size favicon.ico plus ready PNG icons for your site and app — in your browser, with no upload.",
       intro:
@@ -963,6 +974,7 @@ const en: typeof ar = {
     },
     exif: {
       nav: "Remove EXIF data",
+      short: "EXIF",
       h1: "Remove EXIF data from images",
       meta: "Strip camera and GPS location metadata from your photos before publishing them — in your browser, with no upload.",
       intro:
