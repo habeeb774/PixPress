@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Locale } from "@/i18n/config";
+import { defaultLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { toolPresets, toolSlugs, type ToolSlug } from "@/lib/tools";
 import { SITE_URL } from "@/lib/constants";
@@ -138,9 +138,8 @@ export function toolMetadata(locale: Locale, slug: ToolSlug) {
     alternates: {
       canonical: `${SITE_URL}/${locale}/${slug}`,
       languages: {
-        ar: `${SITE_URL}/ar/${slug}`,
-        en: `${SITE_URL}/en/${slug}`,
-        "x-default": `${SITE_URL}/ar/${slug}`,
+        ...Object.fromEntries(locales.map((l) => [l, `${SITE_URL}/${l}/${slug}`])),
+        "x-default": `${SITE_URL}/${defaultLocale}/${slug}`,
       },
     },
     openGraph: { title: tool.h1, description: tool.meta, url: `${SITE_URL}/${locale}/${slug}` },

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Cairo } from "next/font/google";
-import { dir, isLocale, locales, type Locale } from "@/i18n/config";
+import { defaultLocale, dir, isLocale, locales, ogLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import Header from "@/components/Header";
@@ -57,7 +57,10 @@ export async function generateMetadata({
         : ["compress images", "image compressor", "compress jpg", "compress png", "resize images"],
     alternates: {
       canonical: `${SITE_URL}/${l}`,
-      languages: { ar: `${SITE_URL}/ar`, en: `${SITE_URL}/en`, "x-default": `${SITE_URL}/ar` },
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, `${SITE_URL}/${l}`])),
+        "x-default": `${SITE_URL}/${defaultLocale}`,
+      },
     },
     openGraph: {
       type: "website",
@@ -65,7 +68,7 @@ export async function generateMetadata({
       siteName: SITE_NAME,
       title: t.hero.title,
       description: t.hero.subtitle,
-      locale: l === "ar" ? "ar_SA" : "en_US",
+      locale: ogLocale[l],
       images: [{ url: "/og.png", width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {

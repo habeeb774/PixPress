@@ -42,8 +42,10 @@ const QA = {
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const ar = !isLocale(locale) || locale === "ar";
-  const t = getDictionary(ar ? "ar" : "en");
+  const l = isLocale(locale) ? locale : "ar";
+  const ar = l === "ar";
+  // عناوين الصفحة بلغة الزائر حتى لو بقي المتن إنجليزياً
+  const t = getDictionary(l);
   const items = ar ? QA.ar : QA.en;
 
   // Schema.org FAQPage يجعل الأسئلة مؤهّلة للظهور كمقتطف مُنسَّق

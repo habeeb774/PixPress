@@ -7,8 +7,10 @@ export const metadata: Metadata = { title: "Terms / الشروط" };
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const ar = !isLocale(locale) || locale === "ar";
-  const t = getDictionary(ar ? "ar" : "en");
+  const l = isLocale(locale) ? locale : "ar";
+  const ar = l === "ar";
+  // عناوين الصفحة بلغة الزائر حتى لو بقي المتن إنجليزياً
+  const t = getDictionary(l);
 
   return (
     <Prose title={t.nav.terms}>
