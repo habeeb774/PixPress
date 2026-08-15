@@ -49,11 +49,28 @@ const nextConfig: NextConfig = {
   compress: true,
   images: { formats: ["image/avif", "image/webp"] },
   experimental: { optimizePackageImports: ["lucide-react", "framer-motion"] },
+  /** www نسخة ثانية من الموقع بالكامل — نُوحّدها على الجذر بتحويل دائم */
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.leanpix.site" }],
+        destination: "https://leanpix.site/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
         source: "/:path*",
         headers: [
+          // includeSubDomains دون preload: الأخير يقتضي تسجيلاً في قائمة
+          // المتصفحات ويصعب التراجع عنه، فنتركه قراراً منفصلاً
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains",
+          },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

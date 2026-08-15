@@ -26,11 +26,35 @@ export default function ToolPage({ locale, slug }: { locale: Locale; slug: ToolS
     })),
   };
 
+  /** يمنح الصفحة مسار تنقّل ظاهراً في نتائج البحث بدل عنوان عارٍ */
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t.nav.home,
+        item: `${SITE_URL}/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: tool.nav,
+        item: `${SITE_URL}/${locale}/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <section className="mx-auto max-w-3xl px-5 pb-8 pt-14 text-center md:pt-20">
