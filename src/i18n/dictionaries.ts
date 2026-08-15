@@ -42,6 +42,14 @@ const ar = {
     product: "منتج",
   },
   howto: { title: "كيف تستخدمها" },
+  contact: {
+    kind: "نوع الرسالة",
+    kinds: ["بلاغ عن خلل", "اقتراح", "شراكة", "استفسار عام"],
+    name: "الاسم",
+    message: "الرسالة",
+    send: "إرسال",
+    note: "يفتح الزر برنامج البريد لديك برسالة جاهزة — لا نُشغّل خادماً يستقبل نماذج، ولا نحتفظ ببياناتك. متوسط الرد ٢٤–٤٨ ساعة.",
+  },
   pdf: {
     pick: "اختر الصور لتحويلها إلى PDF",
     pickHint: "يمكنك اختيار عدة صور معاً — كل صورة تصبح صفحة",
@@ -578,6 +586,14 @@ const en: typeof ar = {
     product: "Product",
   },
   howto: { title: "How to use it" },
+  contact: {
+    kind: "What is this about?",
+    kinds: ["Bug report", "Suggestion", "Partnership", "General question"],
+    name: "Name",
+    message: "Message",
+    send: "Send",
+    note: "The button opens your mail app with the message ready — we run no server to receive forms and keep none of your details. Typical reply within 24–48 hours.",
+  },
   pdf: {
     pick: "Choose images to turn into a PDF",
     pickHint: "Pick several at once — each image becomes a page",

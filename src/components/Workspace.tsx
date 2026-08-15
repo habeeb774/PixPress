@@ -6,7 +6,7 @@ import { FileArchive, ImageDown, RefreshCw, Trash2 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { CompressionSettings } from "@/lib/types";
-import { formatBytes, renameWithExt } from "@/lib/utils";
+import { formatBytes, renameWithExt, savingsPercent } from "@/lib/utils";
 import { compressFile, terminateWorker } from "@/lib/compressor";
 import Dropzone from "./Dropzone";
 import SettingsPanel from "./SettingsPanel";
@@ -156,6 +156,25 @@ export default function Workspace({
           <div className="min-w-0 space-y-4">
             <Dropzone t={t} compact />
 
+            {totals.count > 0 && (
+              <div className="rounded-[var(--radius-card)] border border-[var(--color-good)]/30 bg-[var(--color-good)]/5 p-5">
+                <dl className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                  <Stat label={t.job.before} value={formatBytes(totals.before, locale)} />
+                  <Stat label={t.job.after} value={formatBytes(totals.after, locale)} />
+                  <Stat
+                    label={t.stats.saved}
+                    value={formatBytes(totals.before - totals.after, locale)}
+                    accent
+                  />
+                  <Stat
+                    label={t.job.saved}
+                    value={`−${savingsPercent(totals.before, totals.after)}%`}
+                    accent
+                  />
+                </dl>
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-2 rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] p-4">
               <p className="text-sm text-[var(--color-ink-soft)]">
                 {t.actions.totalSaved
@@ -220,6 +239,23 @@ export default function Workspace({
           </aside>
         </div>
       )}
+    </div>
+  );
+}
+
+function Stat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+  return (
+    <div>
+      <dt className="text-xs text-[var(--color-ink-soft)]">{label}</dt>
+      <dd
+        className={
+          accent
+            ? "text-xl font-bold text-[var(--color-good)]"
+            : "text-xl font-bold text-[var(--color-ink)]"
+        }
+      >
+        {value}
+      </dd>
     </div>
   );
 }

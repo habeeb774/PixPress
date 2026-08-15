@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, Github } from "lucide-react";
 import Prose from "../_Prose";
+import ContactForm from "@/components/ContactForm";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
 
@@ -18,16 +19,18 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           ? "بلاغ عن خلل، أو صيغة تريد دعمها، أو فكرة تحسين — اكتب لنا ونقرأ كل رسالة."
           : "Report a bug, request a format, or suggest an improvement. We read everything."}
       </p>
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      <ContactForm t={t} />
+
+      <div className="mt-8 grid gap-3 sm:grid-cols-2">
         <a
-          href="mailto:hello@leanpix.app"
+          href="mailto:hello@leanpix.site"
           className="flex items-center gap-3 rounded-[var(--radius-card)] border border-[var(--color-line)] p-4 transition hover:border-[var(--color-brand)]"
         >
           <Mail className="h-5 w-5 text-[var(--color-brand)]" />
-          <span className="text-[var(--color-ink)]">hello@leanpix.app</span>
+          <span className="text-[var(--color-ink)]">hello@leanpix.site</span>
         </a>
         <a
-          href="https://github.com"
+          href="https://github.com/habeeb774/PixPress"
           rel="noopener noreferrer"
           target="_blank"
           className="flex items-center gap-3 rounded-[var(--radius-card)] border border-[var(--color-line)] p-4 transition hover:border-[var(--color-brand)]"
