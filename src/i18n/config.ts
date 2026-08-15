@@ -1,5 +1,5 @@
 // تُضاف اللغة هنا فقط بعد اكتمال ترجمتها — لا نشحن لغة نصفها إنجليزي
-export const locales = ["ar", "en", "es"] as const;
+export const locales = ["ar", "en", "es", "fr"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "ar";
 
@@ -15,6 +15,7 @@ export const localeNames: Record<Locale, string> = {
   ar: "العربية",
   en: "English",
   es: "Español",
+  fr: "Français",
 };
 
 /** وسوم OpenGraph تحتاج صيغة اللغة والبلد معاً */
@@ -22,4 +23,5 @@ export const ogLocale: Record<Locale, string> = {
   ar: "ar_SA",
   en: "en_US",
   es: "es_ES",
+  fr: "fr_FR",
 };

@@ -4,6 +4,7 @@ import Prose from "../_Prose";
 import ContactForm from "@/components/ContactForm";
 import { getDictionary } from "@/i18n/dictionaries";
 import { isLocale } from "@/i18n/config";
+import { getPages } from "@/i18n/pages";
 
 export const metadata: Metadata = { title: "Contact / اتصل بنا" };
 
@@ -11,16 +12,12 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   const l = isLocale(locale) ? locale : "ar";
   const ar = l === "ar";
-  // عناوين الصفحة بلغة الزائر حتى لو بقي المتن إنجليزياً
   const t = getDictionary(l);
+  const page = getPages(l).contact;
 
   return (
     <Prose title={t.nav.contact}>
-      <p>
-        {ar
-          ? "بلاغ عن خلل، أو صيغة تريد دعمها، أو فكرة تحسين — اكتب لنا ونقرأ كل رسالة."
-          : "Report a bug, request a format, or suggest an improvement. We read everything."}
-      </p>
+      <p>{page.intro}</p>
       <ContactForm t={t} />
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">

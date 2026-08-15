@@ -511,4 +511,71 @@ const en: typeof ar = {
     },
   },};
 
+export const pages = {
+  about: {
+    title: "About",
+    body: [
+      { p: "LeanPix compresses images entirely inside your browser. Your files are never uploaded, stored, or seen by us." },
+      { h: "Why in-browser?", p: "Uploading means waiting, size caps, and trusting a third party. Modern browsers encode JPEG, WebP, and AVIF locally at excellent quality, so we run that work in Web Workers and keep the interface responsive across large batches." },
+      { h: "How quality is chosen", p: "Auto mode balances size against quality based on format and file size. Large photos take stronger compression without visible loss; small ones are treated conservatively. Set quality manually from 1 to 100 whenever you want full control." },
+      { h: "Why we built LeanPix", p: "Most image compressors ask one thing of you before they will help: upload your files to their server. It sounds trivial and is not — product shots before launch, personal documents, family photos carrying the coordinates of where they were taken. All of it goes to a machine you do not run, for a length of time nobody tells you." },
+      { p: "We built LeanPix on the view that the request is no longer necessary. The browser in front of you can do the whole job, so your images have no reason to leave your device in order to be compressed." },
+      { h: "What we commit to", p: "We do not receive your images. That is architecture rather than a promise — there is no server on our side that accepts them. Disconnect after the page loads and carry on working." },
+      { p: "No accounts, no daily caps. No sign-up, no email, no card, and no counter that stops you at the tenth image. The only limits are 25 MB per image and 30 per batch, and those belong to your browser's memory rather than to our service." },
+      { p: "No watermark. What lands on your device is your image, not your image signed by us." },
+      { h: "Who it is for", p: "Shop owners preparing dozens of product photos before upload, site owners whose images drag down their speed scores, developers who need WebP, AVIF or an icon pack in a minute, and anyone who wants their location stripped from a photo before publishing it." },
+    ],
+    links: [
+      ["compress", "Compress"],
+      ["resize", "Resize"],
+      ["convert", "Convert"],
+      ["pdf", "Images to PDF"],
+      ["icon", "Icon generator"],
+      ["exif", "Remove EXIF"],
+    ],
+    startHere: "Start here",
+  },
+  privacy: {
+    title: "Privacy",
+    sections: [
+      { h: "Your images", p: "Images are processed locally in your browser and never sent to our servers. They leave memory the moment you close the tab or select \"Clear all\"." },
+      { h: "What we store", p: "Your compression settings and usage counters are kept in your browser's local storage. They never leave your device, and you can reset them from the dashboard." },
+      { h: "Advertising", p: "We show ads through Google AdSense to cover the cost of running the site. Google and its partners use cookies to serve ads based on your prior visits to this or other websites, and may collect data such as IP address, device type and browser." },
+      { p: "None of this reaches your images — they are processed inside your browser and are never sent to anyone, Google included." },
+      { p: "You can turn off personalised advertising in Google Ad Settings, or read how Google uses data on partner sites." },
+      { h: "Other cookies", p: "We set no tracking cookies of our own and use no third-party analytics. What we keep is limited to the local storage described above." },
+      { h: "EXIF data", p: "With \"Remove EXIF data\" enabled — the default — camera and location metadata is stripped from the output." },
+    ],
+  },
+  terms: {
+    title: "Terms",
+    sections: [
+      { h: "A free service", p: "LeanPix is free, with no sign-up and no usage limit beyond the technical limits below." },
+      { h: "Limits", p: "25 MB per image and 30 images per batch. These are browser memory limits, not service limits." },
+      { h: "Your content", p: "You are responsible for the images you process. We do not have access to them and cannot, so we cannot review or moderate them." },
+      { h: "No warranty", p: "The service is provided as-is. We do not guarantee continuous availability or specific compression results." },
+      { h: "Changes", p: "We may update these terms as the service evolves; the date of the last revision will appear here." },
+    ],
+  },
+  contact: {
+    intro: "Report a bug, request a format, or suggest an improvement. We read everything.",
+  },
+  faq: [
+    ["Are my images uploaded?", "No. Compression runs in your browser via Web Workers; files never leave your device."],
+    ["How much do I save?", "Typically 40–80%, depending on format and content. Photographs compress far better than flat graphics."],
+    ["Does quality suffer?", "Auto mode targets a quality where the difference isn't visible. Use the compare slider to check before downloading."],
+    ["What about animated GIFs?", "We handle the first frame of static GIFs and convert to PNG or JPEG. Animation isn't supported yet."],
+    ["Is transparency kept?", "Yes for PNG, WebP, and AVIF. JPEG has no alpha channel, so the background is filled white."],
+    ["What are the limits?", "25 MB per image and 30 images per batch, to protect browser memory."],
+    ["Do I need an account?", "No. No sign-up, no email, no card. Open the page and use any tool. We keep nothing about you because we receive nothing in the first place."],
+    ["Is it completely free?", "Yes, with no watermark and no daily cap. Processing happens on your own device, so it costs us no servers to charge for. Ads cover the running costs."],
+    ["How do I set a custom quality?", "In the settings panel choose Custom quality and move the slider between 1 and 100. Or pick No compression if you want to change dimensions or format without touching quality."],
+    ["How is this different from TinyPNG or iLoveIMG?", "Those upload your images to their servers and send them back. We upload nothing — hence no queue, no daily cap, and no question about what happens to your files afterwards. We also support AVIF, icon generation and PDF conversion."],
+    ["Do you support HEIC from iPhone?", "Not yet. Desktop browsers cannot decode HEIC, and bundling a decoder would slow the page for everyone to serve a few. Set your iPhone camera to Most Compatible and you will get JPG."],
+    ["Does it work offline?", "Once the page has loaded, processing needs no connection because it all happens locally."],
+    ["Where are my statistics stored?", "In your browser's local storage alone; they never leave your device. Reset them from the usage dashboard whenever you like."],
+    ["Can I use it on mobile?", "Yes, on iPhone and Android straight from the browser with nothing to install. Very large batches can be slower on an older phone, since processing uses device memory."],
+  ] as [string, string][],
+};
+
 export default en;

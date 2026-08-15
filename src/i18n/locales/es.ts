@@ -537,4 +537,77 @@ const es: typeof ar = {
   },
 };
 
+/**
+ * متن الصفحات الثابتة (من نحن، الخصوصية، الشروط، الأسئلة، اتصل بنا) — كل لغة
+ * نصّها الكامل هنا لا كتفريع ثنائي داخل كل صفحة، فتُضاف اللغة بملف واحد.
+ */
+export const pages = {
+  about: {
+    title: "Quiénes somos",
+    body: [
+      {
+        p: "LeanPix comprime imágenes por completo dentro de tu navegador. Tus archivos nunca se suben, no se guardan ni los vemos nosotros.",
+      },
+      { h: "¿Por qué en el navegador?", p: "Subir imágenes implica esperar, límites de tamaño y confiar en un tercero. Los navegadores modernos codifican JPEG, WebP y AVIF en local con una calidad excelente, así que hacemos ese trabajo en Web Workers y mantenemos la interfaz fluida incluso con lotes grandes." },
+      { h: "Cómo se elige la calidad", p: "El modo automático equilibra peso y calidad según el formato y el tamaño del archivo. Las fotos grandes admiten una compresión más fuerte sin pérdida visible; las pequeñas se tratan con más cuidado. Ajusta la calidad manualmente de 1 a 100 cuando quieras el control total." },
+      { h: "Por qué creamos LeanPix", p: "La mayoría de los compresores de imágenes te piden una cosa antes de ayudarte: subir tus archivos a su servidor. Parece trivial y no lo es — fotos de producto antes de un lanzamiento, documentos personales, fotos familiares con las coordenadas de dónde se tomaron. Todo eso va a una máquina que no controlas, durante un tiempo que nadie te dice." },
+      { p: "Creamos LeanPix con la idea de que esa petición ya no es necesaria. El navegador que tienes delante puede hacer todo el trabajo, así que tus imágenes no tienen por qué salir de tu dispositivo para comprimirse." },
+      { h: "Nuestro compromiso", p: "No recibimos tus imágenes. No es una promesa, es la arquitectura — no existe ningún servidor nuestro que las acepte. Puedes desconectarte tras cargar la página y seguir trabajando." },
+      { p: "Sin cuentas ni límites diarios. Sin registro, sin correo, sin tarjeta, y sin contador que te frene en la décima imagen. Los únicos límites son 25 MB por imagen y 30 por lote, y pertenecen a la memoria de tu navegador, no a nuestro servicio." },
+      { p: "Sin marca de agua. Lo que llega a tu dispositivo es tu imagen, no tu imagen firmada por nosotros." },
+      { h: "Para quién es", p: "Para quienes preparan decenas de fotos de producto antes de subirlas, para quienes ven cómo las imágenes penalizan la velocidad de su web, para desarrolladores que necesitan WebP, AVIF o un paquete de iconos en un minuto, y para cualquiera que quiera borrar la ubicación de una foto antes de publicarla." },
+    ],
+    links: [
+      ["compress", "Comprimir"],
+      ["resize", "Redimensionar"],
+      ["convert", "Convertir"],
+      ["pdf", "Imágenes a PDF"],
+      ["icon", "Generador de iconos"],
+      ["exif", "Eliminar EXIF"],
+    ],
+    startHere: "Empieza aquí",
+  },
+  privacy: {
+    title: "Privacidad",
+    sections: [
+      { h: "Tus imágenes", p: "Las imágenes se procesan localmente en tu navegador y nunca se envían a nuestros servidores. Desaparecen de la memoria en cuanto cierras la pestaña o pulsas «Borrar todo»." },
+      { h: "Qué guardamos", p: "Tus ajustes de compresión y tus contadores de uso se guardan en el almacenamiento local del navegador. Nunca salen de tu dispositivo y puedes reiniciarlos desde el panel de uso." },
+      { h: "Publicidad", p: "Mostramos anuncios mediante Google AdSense para cubrir el coste de mantener el sitio. Google y sus socios usan cookies para mostrar anuncios según tus visitas previas a este sitio u otros, y pueden recoger datos como la IP, el tipo de dispositivo y el navegador." },
+      { p: "Nada de esto llega a tus imágenes: se procesan dentro de tu navegador y nunca se envían a nadie, tampoco a Google." },
+      { p: "Puedes desactivar la publicidad personalizada en la configuración de anuncios de Google, o leer cómo usa Google los datos en los sitios de sus socios." },
+      { h: "Otras cookies", p: "No colocamos cookies de seguimiento propias ni usamos análisis de terceros. Lo que guardamos se limita al almacenamiento local descrito arriba." },
+      { h: "Datos EXIF", p: "Con «Eliminar datos EXIF» activado — la opción predeterminada — se eliminan los metadatos de cámara y ubicación del archivo resultante." },
+    ],
+  },
+  terms: {
+    title: "Términos",
+    sections: [
+      { h: "Un servicio gratuito", p: "LeanPix es gratuito, sin registro y sin límite de uso más allá de los límites técnicos indicados abajo." },
+      { h: "Límites", p: "25 MB por imagen y 30 imágenes por lote. Son límites de la memoria del navegador, no del servicio." },
+      { h: "Tu contenido", p: "Eres responsable de las imágenes que proceses. No accedemos a ellas ni podemos hacerlo, así que no podemos revisarlas ni moderarlas." },
+      { h: "Sin garantía", p: "El servicio se ofrece tal cual. No garantizamos disponibilidad continua ni resultados concretos de compresión." },
+      { h: "Cambios", p: "Podemos actualizar estos términos según evolucione el servicio; la fecha de la última revisión aparecerá aquí." },
+    ],
+  },
+  contact: {
+    intro: "Informa de un error, pide un formato o sugiere una mejora — lo leemos todo.",
+  },
+  faq: [
+    ["¿Se suben mis imágenes?", "No. La compresión ocurre en tu navegador mediante Web Workers; los archivos nunca salen de tu dispositivo."],
+    ["¿Cuánto ahorro?", "Normalmente entre un 40 % y un 80 %, según el formato y el contenido. Las fotografías se comprimen mucho mejor que los gráficos planos."],
+    ["¿Se pierde calidad?", "El modo automático apunta a una calidad donde la diferencia no se aprecia. Usa el comparador para comprobarlo antes de descargar."],
+    ["¿Qué pasa con los GIF animados?", "Tratamos el primer fotograma de los GIF estáticos y lo convertimos a PNG o JPEG. La animación aún no es compatible."],
+    ["¿Se conserva la transparencia?", "Sí con PNG, WebP y AVIF. El JPEG no tiene canal alfa, así que el fondo se rellena de blanco."],
+    ["¿Cuáles son los límites?", "25 MB por imagen y 30 imágenes por lote, para proteger la memoria del navegador."],
+    ["¿Necesito una cuenta?", "No. Sin registro, sin correo, sin tarjeta. Abre la página y usa cualquier herramienta. No guardamos nada tuyo porque no recibimos nada."],
+    ["¿Es completamente gratis?", "Sí, sin marca de agua y sin límite diario. El procesamiento ocurre en tu propio dispositivo, así que no nos cuesta servidores que cobrar. Los anuncios cubren los gastos de funcionamiento."],
+    ["¿Cómo fijo una calidad personalizada?", "En el panel de ajustes elige «Calidad personalizada» y mueve el control entre 1 y 100. O elige «Sin comprimir» si quieres cambiar dimensiones o formato sin tocar la calidad."],
+    ["¿En qué os diferenciáis de TinyPNG o iLoveIMG?", "Esas herramientas suben tus imágenes a su servidor y te las devuelven. Nosotros no subimos nada — por eso no hay cola, ni límite diario, ni duda sobre qué pasa después con tus archivos. También admitimos AVIF, generación de iconos y conversión a PDF."],
+    ["¿Admitís HEIC de iPhone?", "Todavía no. Los navegadores de escritorio no decodifican HEIC, y añadir un decodificador ralentizaría la página para todos por servir a unos pocos. Configura tu iPhone en «Más compatible» y obtendrás JPG."],
+    ["¿Funciona sin conexión?", "Una vez cargada la página, el procesamiento no necesita conexión porque ocurre en local."],
+    ["¿Dónde se guardan mis estadísticas?", "Solo en el almacenamiento local de tu navegador; nunca salen de tu dispositivo. Puedes reiniciarlas desde el panel de uso."],
+    ["¿Funciona en el móvil?", "Sí, en iPhone y Android directamente desde el navegador, sin instalar nada. Un lote muy grande puede ir más lento en un teléfono antiguo, porque el procesamiento usa su memoria."],
+  ] as [string, string][],
+};
+
 export default es;
