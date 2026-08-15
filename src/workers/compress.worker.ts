@@ -87,8 +87,10 @@ self.onmessage = async (e: MessageEvent<WorkerRequest>) => {
     } else {
       blob = await canvas.convertToBlob({ type: mime, quality: primaryQuality });
 
-      // إذا كان الناتج ما زال كبيرًا جدًا، نكرر الترميز بضغط أقوى.
-      const shouldRetry = blob.size > 1024 * 1024 && primaryQuality > 0.45;
+      // إذا كان الناتج ما زال كبيرًا جدًا، نكرر الترميز بضغط أقوى —
+      // إلا إذا طلب المستخدم أعلى جودة صراحةً، فلا نضغط ما لم يطلب ضغطه.
+      const shouldRetry =
+        primaryQuality < 0.99 && blob.size > 1024 * 1024 && primaryQuality > 0.45;
       if (shouldRetry) {
         const retryQuality = Math.max(0.3, primaryQuality - 0.15);
         blob = await canvas.convertToBlob({ type: mime, quality: retryQuality });
@@ -98,7 +100,10 @@ self.onmessage = async (e: MessageEvent<WorkerRequest>) => {
     // بعض المتصفحات تتجاهل صيغة غير مدعومة وترجع PNG أكبر من الأصل
     let outMime = blob.type || mime;
     if (outMime !== mime && mime !== "image/png") {
-      blob = await canvas.convertToBlob({ type: "image/jpeg", quality: Math.max(0.3, primaryQuality - 0.1) });
+      blob = await canvas.convertToBlob({
+        type: "image/jpeg",
+        quality: primaryQuality >= 0.99 ? primaryQuality : Math.max(0.3, primaryQuality - 0.1),
+      });
       outMime = "image/jpeg";
     }
 
