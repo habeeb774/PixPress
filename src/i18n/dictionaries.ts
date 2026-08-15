@@ -4,9 +4,9 @@ const ar = {
   nav: { home: "الرئيسية", about: "من نحن", privacy: "الخصوصية", terms: "الشروط", contact: "اتصل بنا", faq: "الأسئلة الشائعة" },
   brand: { name: "LeanPix", tagline: "ضغط الصور في المتصفح" },
   hero: {
-    title: "ضغط الصور بدون رفعها إلى أي خادم",
+    title: "ضغط الصور مجاناً بدون رفعها إلى أي خادم",
     subtitle:
-      "قلّل حجم صورك حتى ٨٠٪ دون فرق تراه العين — ضغطاً وتحويلاً وتغيير أبعاد. كل شيء يجري داخل متصفحك، فلا تغادر صورك جهازك ولا تنتظر رفعاً.",
+      "قلّل حجم الصورة حتى ٨٠٪ دون فرق تراه العين — ضغطاً وتحويلاً وتغيير أبعاد لصيغ JPG وPNG وGIF وWebP وAVIF. كل شيء يجري داخل متصفحك، فلا تغادر صورك جهازك ولا تنتظر رفعاً.",
     cta: "اختر الصور",
     drop: "أو اسحب الصور وأفلتها هنا",
     formats: "JPG · PNG · WebP · AVIF · GIF · حتى ٢٥ ميجابايت للصورة",
@@ -41,6 +41,21 @@ const ar = {
     product: "منتج",
   },
   howto: { title: "كيف تستخدمها" },
+  pdf: {
+    pick: "اختر الصور لتحويلها إلى PDF",
+    pickHint: "يمكنك اختيار عدة صور معاً — كل صورة تصبح صفحة",
+    pageSize: "مقاس الصفحة",
+    a4: "A4",
+    letter: "Letter",
+    fit: "بمقاس الصورة",
+    margin: "الهامش (نقطة)",
+    order: "ترتيب الصفحات",
+    orderHint: "اسحب الصور لإعادة ترتيبها — ترتيبها هنا هو ترتيب صفحات الملف",
+    download: "تنزيل ملف PDF",
+    building: "جارٍ الإنشاء…",
+    addMore: "إضافة صور",
+    failed: "تعذّر إنشاء الملف",
+  },
   icon: {
     pick: "اختر صورة لتحويلها إلى أيقونة",
     pickHint: "‏PNG أو SVG بخلفية شفافة يعطي أفضل نتيجة — ويُفضّل أن تكون مربّعة",
@@ -106,10 +121,10 @@ const ar = {
   tools: {
     compress: {
       nav: "ضغط الصور",
-      h1: "ضغط الصور أونلاين بدون رفعها",
-      meta: "ضغط JPG وPNG وWebP وAVIF داخل متصفحك مباشرة. حتى ٨٠٪ توفير دون فرق تراه العين، وبلا رفع إلى أي خادم.",
+      h1: "ضغط الصور أونلاين مجاناً بدون رفعها",
+      meta: "أداة ضغط الصور مجاناً: قلّل حجم الصورة من JPG وPNG وGIF وWebP وAVIF داخل متصفحك، بلا رفع إلى أي خادم وبلا حد يومي.",
       intro:
-        "اسحب صورك وستُضغط فوراً داخل متصفحك. لا رفع، ولا طابور انتظار، ولا حدّ يومي — ولا تغادر أي صورة جهازك في أي لحظة.",
+        "اسحب صورك وسيبدأ ضغط الصور فوراً داخل متصفحك. لا رفع، ولا طابور انتظار، ولا حدّ يومي — ولا تغادر أي صورة جهازك في أي لحظة.",
       body: [
         {
           h: "لماذا يهمّ حجم الصورة؟",
@@ -120,8 +135,16 @@ const ar = {
           p: "الوضع التلقائي يفحص حجم كل صورة وصيغتها ثم يختار جودة مناسبة لها وحدها: الصور الكبيرة تتحمّل ضغطاً أقوى دون أثر مرئي، والصغيرة تحتاج لطفاً أكبر. وإن أردت التحكم الكامل فاختر «جودة مخصصة» وحرّك المؤشّر بين ١ و١٠٠ وقارن النتيجة بنفسك.",
         },
         {
-          h: "الصيغ المدعومة",
-          p: "JPG وPNG وWebP وAVIF وGIF، حتى ٢٥ ميجابايت للصورة و٣٠ صورة في الدفعة الواحدة. تستطيع إبقاء الصيغة كما هي أو التحويل إلى صيغة أحدث أثناء الضغط.",
+          h: "ضغط ملف JPG",
+          p: "‏JPG أشيع صيغ الصور الفوتوغرافية وأكثرها استجابةً للضغط. صورة كاميرا بحجم ٥ ميجابايت تنزل عادةً إلى أقل من ميجابايت واحد دون فرق تلحظه العين، لأن ترميز JPG يتخلّص أولاً من التفاصيل التي لا يميّزها البصر. اسحب ملفاتك واتركها على الوضع التلقائي، أو حدّد حجماً مستهدفاً بالكيلوبايت إن كنت مقيّداً بحدّ رفع في منصة ما.",
+        },
+        {
+          h: "ضغط الصور GIF",
+          p: "‏GIF ثقيل لأنه يخزّن إطارات متعدّدة بترميز قديم. نحوّله إلى صورة ثابتة — PNG للحفاظ على الشفافية أو JPG بدونها — فينخفض الحجم انخفاضاً حاداً. إن كنت تحتاج الحركة نفسها فالبديل الصحيح فيديو قصير بصيغة MP4 أو WebM، لا GIF مضغوط.",
+        },
+        {
+          h: "الصيغ المدعومة وحدود الاستخدام",
+          p: "JPG وPNG وWebP وAVIF وGIF، حتى ٢٥ ميجابايت للصورة و٣٠ صورة في الدفعة الواحدة. تستطيع إبقاء الصيغة كما هي أو التحويل إلى صيغة أحدث أثناء ضغط حجم الصورة.",
         },
       ],
       steps: [
@@ -178,6 +201,22 @@ const ar = {
         {
           q: "هل يدعم AVIF؟",
           a: "نعم، ضغطاً وتحويلاً. وهي صيغة توفّر أكثر من WebP لكن ترميزها أبطأ.",
+        },
+        {
+          q: "هل ضغط الصور مجاناً فعلاً؟",
+          a: "نعم، بلا مقابل وبلا تسجيل وبلا علامة مائية. المعالجة تجري على جهازك أنت، فلا تكلّفنا خوادم حتى نطلب مقابلها.",
+        },
+        {
+          q: "كيف أضغط ملف jpg؟",
+          a: "اسحب ملف JPG إلى الصفحة ويُضغط فوراً. الوضع التلقائي يختار الجودة المناسبة لحجم الصورة، ولك ضبطها يدوياً أو تحديد حجم مستهدف بالكيلوبايت.",
+        },
+        {
+          q: "هل يمكن ضغط الصور gif؟",
+          a: "نعم، لكن الناتج صورة ثابتة لأن ترميز GIF المتحرك غير ممكن عبر canvas. إن كنت تريد الإبقاء على الحركة فحوّلها إلى MP4 أو WebM بدل ضغط GIF.",
+        },
+        {
+          q: "كيف أقلّل حجم الصورة إلى حدّ معيّن؟",
+          a: "استخدم أزرار «حجم الملف المستهدف» واختر ١٠٠ أو ٢٠٠ أو ٥٠٠ كيلوبايت، فنجرّب مستويات جودة متتالية حتى نصل إلى أقرب ناتج لا يتجاوز الحد الذي طلبته.",
         },
       ],
     },
@@ -300,6 +339,67 @@ const ar = {
         {
           q: "هل يمكن تحويل عدة صيغ مختلطة معاً؟",
           a: "نعم. اسحب JPG وPNG وWebP معاً واختر صيغة إخراج واحدة — تُوحَّد كلها إليها.",
+        },
+      ],
+    },
+    pdf: {
+      nav: "تحويل الصور إلى PDF",
+      h1: "تحويل الصور إلى PDF مجاناً",
+      meta: "حوّل صورة أو عدة صور إلى ملف بي دي اف واحد داخل متصفحك — بترتيب تختاره ومقاس صفحة تحدّده، وبلا رفع إلى أي خادم.",
+      intro:
+        "اختر صورك ورتّبها كما تشاء، وسنجمعها في ملف PDF واحد. كل صورة تصبح صفحة، والتحويل يجري داخل متصفحك فلا تغادر صورك جهازك.",
+      body: [
+        {
+          h: "لماذا تحويل الصورة إلى بي دي اف؟",
+          p: "الملف الواحد أسهل في الإرسال والطباعة والأرشفة من عشر صور متفرّقة. الجهات الرسمية والبنوك وأنظمة التوظيف تطلب PDF غالباً لأنه يحفظ الترتيب والتنسيق ويُفتح بالشكل نفسه على أي جهاز — بخلاف مجلد صور قد يُعاد ترتيبه أو تُفقد منه صورة.",
+        },
+        {
+          h: "مقاس الصفحة: A4 أم بمقاس الصورة؟",
+          p: "اختر A4 أو Letter إن كنت تنوي الطباعة أو الرفع إلى نظام يتوقّع مقاساً قياسياً — تُوضَع الصورة في وسط الصفحة بهامش تتحكّم به. واختر «بمقاس الصورة» إن كان الملف للعرض على الشاشة فقط، فتأتي الصفحة على مقاس الصورة تماماً بلا أشرطة بيضاء.",
+        },
+        {
+          h: "الترتيب بيدك",
+          p: "اسحب الصور لإعادة ترتيبها قبل التحويل. الترتيب الذي تراه على الشاشة هو ترتيب الصفحات داخل الملف، ويمكنك حذف أي صورة أو إضافة المزيد قبل التنزيل.",
+        },
+      ],
+      steps: [
+        "اختر الصور التي تريد تحويلها — حتى ٣٠ صورة معاً.",
+        "اسحبها لترتيبها كما تريدها أن تظهر في الملف.",
+        "حدّد مقاس الصفحة والهامش.",
+        "اضغط «تنزيل ملف PDF».",
+      ],
+      faq: [
+        {
+          q: "كيف أحوّل صورة إلى PDF؟",
+          a: "اختر الصورة من الأداة أعلاه، حدّد مقاس الصفحة، ثم اضغط «تنزيل ملف PDF». لا تسجيل ولا انتظار ولا علامة مائية.",
+        },
+        {
+          q: "هل يمكن تحويل عدة صور إلى ملف واحد؟",
+          a: "نعم، وهذا هو الوضع الافتراضي. اختر كل الصور معاً وسيصبح كل منها صفحة مستقلة داخل ملف واحد، بالترتيب الذي تضبطه بالسحب.",
+        },
+        {
+          q: "هل تُرفع صوري إلى خادم؟",
+          a: "لا. الملف يُبنى داخل متصفحك بالكامل، ولا يُرسل أي بايت من صورك إلى أي جهة.",
+        },
+        {
+          q: "ما الصيغ المقبولة؟",
+          a: "‏JPG وPNG وWebP وGIF — أي صورة يفتحها متصفحك. صور PNG تحتفظ بشفافيتها داخل الملف.",
+        },
+        {
+          q: "هل يمكن تحويل صورك إلى بي دي اف بمقاس A4؟",
+          a: "نعم، اختر A4 من «مقاس الصفحة». تُوضَع كل صورة في وسط صفحة A4 مع هامش تضبطه بنفسك، والصفحة تدور تلقائياً إن كانت الصورة عرضية.",
+        },
+        {
+          q: "كم صورة أستطيع تحويلها؟",
+          a: "حتى ٣٠ صورة في الملف الواحد. الحد لحماية ذاكرة المتصفح لا لتقييد الاستخدام.",
+        },
+        {
+          q: "هل يكبر حجم الملف كثيراً؟",
+          a: "نُفعّل ضغط PDF تلقائياً. وإن أردت ملفاً أخفّ بكثير فاضغط صورك أولاً من أداة ضغط الصور ثم حوّلها هنا.",
+        },
+        {
+          q: "هل أستطيع ترتيب الصفحات؟",
+          a: "نعم، اسحب أي صورة إلى موضعها الجديد قبل التحويل. الرقم على كل صورة يبيّن رقم صفحتها.",
         },
       ],
     },
@@ -470,6 +570,21 @@ const en: typeof ar = {
     product: "Product",
   },
   howto: { title: "How to use it" },
+  pdf: {
+    pick: "Choose images to turn into a PDF",
+    pickHint: "Pick several at once — each image becomes a page",
+    pageSize: "Page size",
+    a4: "A4",
+    letter: "Letter",
+    fit: "Fit to image",
+    margin: "Margin (pt)",
+    order: "Page order",
+    orderHint: "Drag to reorder — this is the order pages appear in the file",
+    download: "Download PDF",
+    building: "Building…",
+    addMore: "Add images",
+    failed: "Could not build the file",
+  },
   icon: {
     pick: "Choose an image to turn into an icon",
     pickHint: "A square PNG or SVG on a transparent background gives the best result",
@@ -729,6 +844,59 @@ const en: typeof ar = {
         {
           q: "Can I convert mixed formats at once?",
           a: "Yes. Drop JPG, PNG and WebP together and pick a single output format — everything is unified to it.",
+        },
+      ],
+    },
+    pdf: {
+      nav: "Images to PDF",
+      h1: "Convert images to PDF",
+      meta: "Combine one or many images into a single PDF inside your browser — your order, your page size, and nothing uploaded to a server.",
+      intro:
+        "Pick your images, arrange them however you like, and we assemble them into one PDF. Each image becomes a page, and the conversion happens in your browser so nothing leaves your device.",
+      body: [
+        {
+          h: "Why turn images into a PDF?",
+          p: "One file is easier to send, print and archive than ten loose images. Institutions, banks and application systems usually ask for PDF because it preserves order and formatting and opens the same way on any device — unlike a folder of images that can be resorted or arrive incomplete.",
+        },
+        {
+          h: "A4 or fit to image?",
+          p: "Choose A4 or Letter if you intend to print or upload to a system that expects a standard size; the image is centred on the page with a margin you control. Choose fit to image when the file is only for viewing on screen, and each page comes out exactly the size of its image with no white bands.",
+        },
+        {
+          h: "The order is yours",
+          p: "Drag the images to reorder them before converting. What you see on screen is the page order inside the file, and you can remove any image or add more before downloading.",
+        },
+      ],
+      steps: [
+        "Choose the images you want to convert — up to 30 at once.",
+        "Drag them into the order you want them to appear.",
+        "Set the page size and margin.",
+        "Press Download PDF.",
+      ],
+      faq: [
+        {
+          q: "How do I convert an image to PDF?",
+          a: "Pick the image in the tool above, choose a page size, then press Download PDF. No sign-up, no wait, no watermark.",
+        },
+        {
+          q: "Can I put several images in one file?",
+          a: "Yes, and that is the default. Select them all and each becomes its own page in a single file, in the order you set by dragging.",
+        },
+        {
+          q: "Are my images uploaded to a server?",
+          a: "No. The file is assembled entirely in your browser and not one byte of your images is sent anywhere.",
+        },
+        {
+          q: "Which formats are accepted?",
+          a: "JPG, PNG, WebP and GIF — anything your browser can open. PNG images keep their transparency inside the file.",
+        },
+        {
+          q: "How many images can I convert?",
+          a: "Up to 30 per file. The limit protects browser memory rather than restricting use.",
+        },
+        {
+          q: "Will the file be very large?",
+          a: "PDF compression is on by default. For a much lighter file, compress your images first with the compression tool and then convert them here.",
         },
       ],
     },

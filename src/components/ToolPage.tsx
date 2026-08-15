@@ -5,6 +5,7 @@ import { toolPresets, toolSlugs, type ToolSlug } from "@/lib/tools";
 import { SITE_URL } from "@/lib/constants";
 import Workspace from "./Workspace";
 import IconMaker from "./IconMaker";
+import PdfMaker from "./PdfMaker";
 
 /**
  * كل أدوات الموقع تشترك في هذا القالب: عنوان الأداة، ثم الأداة نفسها فوراً،
@@ -39,6 +40,8 @@ export default function ToolPage({ locale, slug }: { locale: Locale; slug: ToolS
 
       {slug === "icon" ? (
         <IconMaker t={t} />
+      ) : slug === "pdf" ? (
+        <PdfMaker t={t} />
       ) : (
         <Workspace t={t} locale={locale} preset={toolPresets[slug]} />
       )}

@@ -40,6 +40,21 @@ export async function generateMetadata({
     title: { default: `${t.hero.title} · ${SITE_NAME}`, template: `%s · ${SITE_NAME}` },
     description: t.hero.subtitle,
     applicationName: SITE_NAME,
+    keywords:
+      l === "ar"
+        ? [
+            "ضغط الصور",
+            "ضغط الصور مجانا",
+            "ضغط الصورة",
+            "ضغط حجم الصور",
+            "ضغط حجم الصورة",
+            "ضغط ملف jpg",
+            "ضغط الصور jpg",
+            "ضغط الصور gif",
+            "تصغير حجم الصور",
+            "تحويل الصور إلى webp",
+          ]
+        : ["compress images", "image compressor", "compress jpg", "compress png", "resize images"],
     alternates: {
       canonical: `${SITE_URL}/${l}`,
       languages: { ar: `${SITE_URL}/ar`, en: `${SITE_URL}/en`, "x-default": `${SITE_URL}/ar` },
