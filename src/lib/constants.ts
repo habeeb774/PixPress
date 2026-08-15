@@ -39,6 +39,9 @@ export const DEFAULT_SETTINGS: CompressionSettings = {
 };
 
 export const PRESET_QUALITY: Record<string, number> = {
+  // بلا ضغط: أعلى جودة ممكنة. مع PNG يكون الترميز بلا فقدان أصلاً،
+  // فتغيير الأبعاد وحده لا يُنقص من الصورة شيئاً.
+  max: 100,
   light: 90,
   medium: 78,
   strong: 60,

@@ -94,8 +94,11 @@ export const useAppStore = create<AppState>()(
             const res = await compressFile(job.id, job.file, get().settings, (p) =>
               patch(job.id, { progress: p })
             );
-            // لا نُخرج ملفاً أكبر من الأصل: نُبقي الأصل عندها
-            const useOriginal = res.blob.size >= job.file.size && get().settings.format === "original";
+            // لا نُخرج ملفاً أكبر من الأصل — إلا إذا طُلب تغيير أبعاد أو صيغة،
+            // فالمستخدم حينها يريد الناتج نفسه لا الأصل مهما كان حجمه
+            const s = get().settings;
+            const asked = s.format !== "original" || s.maxDimension > 0;
+            const useOriginal = !asked && res.blob.size >= job.file.size;
             const blob = useOriginal ? job.file : res.blob;
             const url = URL.createObjectURL(blob);
 

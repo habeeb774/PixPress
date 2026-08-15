@@ -15,6 +15,7 @@ const ar = {
   settings: {
     title: "إعدادات الضغط",
     preset: "مستوى الضغط",
+    max: "بلا ضغط",
     auto: "تلقائي (موصى به)",
     light: "خفيف",
     medium: "متوسط",
@@ -227,7 +228,7 @@ const ar = {
       h1: "تغيير أبعاد الصور دفعة واحدة",
       meta: "صغّر أبعاد صورك إلى ١٩٢٠ أو ١٢٨٠ بكسل أو أي مقاس، مع الحفاظ على النسبة، داخل متصفحك وبلا رفع.",
       intro:
-        "اختر أقصى بُعد وستُصغَّر كل الصور إليه مع الحفاظ على نسبة العرض إلى الارتفاع. الصور الأصغر من الحد تبقى كما هي دون تكبير.",
+        "اختر أقصى بُعد وستُصغَّر كل الصور إليه مع الحفاظ على نسبة العرض إلى الارتفاع. الوضع الافتراضي هنا «بلا ضغط» — تغيير أبعاد فقط دون المساس بالجودة. والصور الأصغر من الحد تبقى كما هي دون تكبير.",
       body: [
         {
           h: "لماذا تغيير الأبعاد قبل الضغط؟",
@@ -259,7 +260,7 @@ const ar = {
         },
         {
           q: "هل أستطيع تغيير الأبعاد دون ضغط؟",
-          a: "اختر مستوى الضغط «خفيف» مع أقصى بُعد المطلوب، فتحصل على تصغير أبعاد بأقل تدخّل ممكن في الجودة.",
+          a: "نعم، وهو الوضع الافتراضي في هذه الصفحة: مستوى «بلا ضغط». صور PNG تُعاد كتابتها بترميز بلا فقدان فلا تخسر شيئاً إطلاقاً، وصور JPG تُرمَّز بأعلى جودة ممكنة — إذ لا مفرّ من إعادة الترميز عند تغيير عدد البكسلات.",
         },
         {
           q: "ما مقاس صور إنستغرام؟",
@@ -549,6 +550,7 @@ const en: typeof ar = {
   settings: {
     title: "Compression settings",
     preset: "Compression level",
+    max: "No compression",
     auto: "Auto (recommended)",
     light: "Light",
     medium: "Medium",
@@ -770,7 +772,7 @@ const en: typeof ar = {
         },
         {
           q: "Can I resize without compressing?",
-          a: "Choose the Light compression level along with your maximum dimension, and you get the resize with as little quality change as possible.",
+          a: "Yes, and it is the default on this page: the No compression level. PNG files are re-encoded losslessly and lose nothing at all; JPGs are encoded at maximum quality, since changing the pixel count always means re-encoding.",
         },
         {
           q: "What size are Instagram images?",

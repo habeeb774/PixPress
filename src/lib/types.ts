@@ -1,5 +1,5 @@
 export type OutputFormat = "original" | "jpeg" | "png" | "webp" | "avif";
-export type Preset = "auto" | "light" | "medium" | "strong" | "custom";
+export type Preset = "max" | "auto" | "light" | "medium" | "strong" | "custom";
 export type JobStatus = "queued" | "reading" | "compressing" | "done" | "error";
 
 /** إعدادات الضغط التي يتحكم بها المستخدم */

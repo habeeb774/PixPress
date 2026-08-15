@@ -6,7 +6,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import type { OutputFormat, Preset } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-const PRESETS: Preset[] = ["auto", "light", "medium", "strong", "custom"];
+const PRESETS: Preset[] = ["max", "auto", "light", "medium", "strong", "custom"];
 const FORMATS: OutputFormat[] = ["original", "jpeg", "png", "webp", "avif"];
 const SIZES = [0, 3840, 2560, 1920, 1280, 800];
 
@@ -29,6 +29,7 @@ export default function SettingsPanel({ t }: { t: Dictionary }) {
   const isWorking = useAppStore((s) => s.isWorking);
 
   const label: Record<Preset, string> = {
+    max: t.settings.max,
     auto: t.settings.auto,
     light: t.settings.light,
     medium: t.settings.medium,
